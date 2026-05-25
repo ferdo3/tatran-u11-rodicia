@@ -1,8 +1,9 @@
 {
   "name": "U11 — Rodičia",
   "short_name": "Rodičia U11",
-  "start_url": "https://script.google.com/macros/s/AKfycbwtY15tDDfX4dz4hZm6WrcuabCfweVtyr3RiCv65wQD1e9Cy99SkR86EOz3U1t5ogm3/exec?view=parent",
+  "start_url": "https://ferdo3.github.io/tatran-u11-rodicia/",
   "display": "standalone",
+  "scope": "https://ferdo3.github.io/tatran-u11-rodicia/",
   "background_color": "#1F8B3F",
   "theme_color": "#1F8B3F",
   "icons": [
