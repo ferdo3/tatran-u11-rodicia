@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="sk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>HRÁČI tab — B1 konsenzus + 2 evolúcie</title>
+<style>
+  :root{--green:#1F8B3F;--green-d:#0F5A28;--beige:#F1EFE8;--bd:#D3D1C7;--tx:#0A0C0B;--tx2:#5F5E5A;--muted:#8A8980;
+    --ovr:#993C1D;--ovr-s:#D85A30;--ok:#3B6D11;--ok-s:#1F8B3F;--und:#854F0B;--und-s:#E0A23C;--gk-s:#7FAE89;
+    --new-bg:#E6F1FB;--new:#185FA5;--pause-bg:#FAEEDA;--pause:#854F0B;}
+  *{box-sizing:border-box;margin:0;padding:0;font-family:Inter,-apple-system,sans-serif;}
+  body{background:#cfcdc4;padding:22px;display:flex;gap:24px;flex-wrap:wrap;align-items:flex-start;justify-content:center;}
+  .col{display:flex;flex-direction:column;align-items:center;gap:10px;width:330px;}
+  .lbl{font-size:15px;font-weight:700;color:#1a1a1a;text-align:center;}
+  .lbl small{display:block;font-weight:400;color:#555;font-size:12px;margin-top:4px;line-height:1.45;}
+  .phone{width:330px;height:680px;background:#fff;border-radius:26px;overflow:hidden;position:relative;
+    box-shadow:0 12px 40px rgba(0,0,0,.22);border:1px solid #c9c7bd;display:flex;flex-direction:column;}
+  .top{background:var(--green-d);color:#fff;font-size:15px;font-weight:600;padding:11px 14px;flex:none;}
+  .body{flex:1;overflow:hidden;background:#fff;padding:12px 12px 0;}
+  .hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+  .cnt{width:34px;height:34px;border:2px solid var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:var(--green-d);}
+  .add{border:2px solid var(--green);color:var(--green-d);background:#fff;border-radius:18px;padding:8px 14px;font-size:13px;font-weight:600;}
+  .sorts{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap;}
+  .sp{font-size:12px;font-weight:500;padding:11px 14px;border-radius:18px;border:1px solid var(--bd);background:#fff;color:var(--tx2);}
+  .sp.on{background:var(--green);border-color:var(--green);color:#fff;}
+  .sec{display:flex;align-items:center;justify-content:space-between;background:#f3f1ea;padding:7px 12px;font-size:11px;font-weight:600;letter-spacing:.8px;color:var(--muted);text-transform:uppercase;border-radius:8px;margin:8px 0 2px;}
+  .row{display:flex;align-items:center;gap:10px;padding:11px 6px 11px 14px;border-top:1px solid #eee;position:relative;}
+  .row:first-of-type{border-top:none;}
+  .nm{font-size:16px;font-weight:600;color:var(--tx);}
+  .nm.muted{color:var(--tx2);}
+  .info{flex:1;min-width:0;}
+  .nmrow{display:flex;align-items:center;gap:7px;flex-wrap:wrap;}
+  .chev{color:var(--bd);font-size:20px;flex:none;}
+  .ico{font-size:18px;flex:none;filter:grayscale(.1);}
+  .pill{font-size:10.5px;font-weight:600;padding:2px 8px;border-radius:7px;letter-spacing:.3px;white-space:nowrap;}
+  .p-new{background:var(--new-bg);color:var(--new);}
+  .p-pause{background:var(--pause-bg);color:var(--pause);}
+  .stripe{position:absolute;left:0;top:8px;bottom:8px;width:4px;border-radius:3px;}
+  .s-ovr{background:var(--ovr-s);}.s-ok{background:var(--ok-s);}.s-und{background:var(--und-s);}.s-gk{background:var(--gk-s);}
+  .micro{font-size:11.5px;color:var(--tx2);margin-top:3px;}
+  .micro.over{color:var(--ovr);}.micro.under{color:var(--und);}
+  /* recency right-tag (frame 3) */
+  .rtag{font-size:10.5px;font-weight:600;color:var(--und);background:var(--pause-bg);padding:2px 8px;border-radius:7px;white-space:nowrap;flex:none;}
+</style></head>
+<body>
+
+<!-- B1 BASE (konsenzus) -->
+<div class="col">
+  <div class="lbl">B1 — KONSENZUS ZÁKLAD <small>tvoj favorit, doladený: pauza OD–DO, SKÚŠOBNÝ preč (len NOVÝ+PAUZA), čisté</small></div>
+  <div class="phone"><div class="top">⚙ U11 Tréner</div><div class="body">
+    <div class="hd"><div class="cnt">30</div><button class="add">+ Pridať hráča</button></div>
+    <div class="sorts"><span class="sp on">A–Z</span><span class="sp">Stav</span><span class="sp">Najmenej hral</span></div>
+    <div class="sec">BRANKÁRI<span>3</span></div>
+    <div class="row"><span class="stripe s-gk"></span><div class="info"><div class="nmrow"><span class="nm">Adam Novák</span></div><div class="micro">vyrovnaný</div></div><span class="ico">🧤</span><span class="chev">›</span></div>
+    <div class="row"><span class="stripe s-und"></span><div class="info"><div class="nmrow"><span class="nm">Marek Tóth</span></div><div class="micro under">hral najmenej</div></div><span class="ico">🧤</span><span class="chev">›</span></div>
+    <div class="sec">HRÁČI V POLI<span>27</span></div>
+    <div class="row"><span class="stripe s-ovr"></span><div class="info"><div class="nmrow"><span class="nm">Lukáš Horváth</span></div><div class="micro over">hral najviac</div></div><span class="chev">›</span></div>
+    <div class="row"><span class="stripe s-ok"></span><div class="info"><div class="nmrow"><span class="nm">Jakub Varga</span><span class="pill p-new">NOVÝ</span></div><div class="micro">vyrovnaný</div></div><span class="chev">›</span></div>
+    <div class="row"><span class="stripe s-und"></span><div class="info"><div class="nmrow"><span class="nm">Samuel Lukáč</span></div><div class="micro under">hral menej</div></div><span class="chev">›</span></div>
+    <div class="row"><span class="stripe s-und"></span><div class="info"><div class="nmrow"><span class="nm muted">Martin Baláž</span><span class="pill p-pause">PAUZA · 20.6.–30.6.</span></div><div class="micro under">hral menej</div></div><span class="chev">›</span></div>
+  </div></div>
+</div>
+
+<!-- B1+R: selektívna recency (text) -->
+<div class="col">
+  <div class="lbl">B1+R — KONSENZUS + recency (text) <small>+ „nehral X zápasov" ale LEN pri podhraných (kde treba nasadiť); OK hráči ostávajú čistí</small></div>
+  <div class="phone"><div class="top">⚙ U11 Tréner</div><div class="body">
+    <div class="hd"><div class="cnt">30</div><button class="add">+ Pridať hráča</button></div>
+    <div class="sorts"><span class="sp on">A–Z</span><span class="sp">Stav</span><span class="sp on" style="background:#E0A23C;border-color:#E0A23C">Najmenej hral</span></div>
+    <div class="sec">BRANKÁRI<span>3</span></div>
+    <div class="row"><span class="stripe s-gk"></span><div class="info"><div class="nmrow"><span class="nm">Adam Novák</span></div><div class="micro">vyrovnaný</div></div><span class="ico">🧤</span><span class="chev">›</span></div>
+    <div class="row"><span class="stripe s-und"></span><div class="info"><div class="nmrow"><span class="nm">Marek Tóth</span></div><div class="micro under">hral najmenej · nehral 5 zápasov</div></div><span class="ico">🧤</span><span class="chev">›</span></div>
+    <div class="sec">HRÁČI V POLI<span>27</span></div>
+    <div class="row"><span class="stripe s-ovr"></span><div class="info"><div class="nmrow"><span class="nm">Lukáš Horváth</span></div><div class="micro over">hral najviac</div></div><span class="chev">›</span></div>
+    <div class="row"><span class="stripe s-ok"></span><div class="info"><div class="nmrow"><span class="nm">Jakub Varga</span><span class="pill p-new">NOVÝ</span></div><div class="micro">vyrovnaný</div></div><span class="chev">›</span></div>
+    <div class="row"><span class="stripe s-und"></span><div class="info"><div class="nmrow"><span class="nm">Samuel Lukáč</span></div><div class="micro under">hral menej · nehral 4 zápasy</div></div><span class="chev">›</span></div>
+    <div class="row"><span class="stripe s-und"></span><div class="info"><div class="nmrow"><span class="nm muted">Martin Baláž</span><span class="pill p-pause">PAUZA · 20.6.–30.6.</span></div><div class="micro under">hral menej</div></div><span class="chev">›</span></div>
+  </div></div>
+</div>
+
+<!-- B1+S: recency ako pravý tag -->
+<div class="col">
+  <div class="lbl">B1+S — KONSENZUS + recency (pravý tag) <small>recency ako kompaktný amber tag vpravo „nehral 5×"; popis ostáva krátky, signál „treba nasadiť" oddelený</small></div>
+  <div class="phone"><div class="top">⚙ U11 Tréner</div><div class="body">
+    <div class="hd"><div class="cnt">30</div><button class="add">+ Pridať hráča</button></div>
+    <div class="sorts"><span class="sp on">A–Z</span><span class="sp">Stav</span><span class="sp">Najmenej hral</span></div>
+    <div class="sec">BRANKÁRI<span>3</span></div>
+    <div class="row"><span class="stripe s-gk"></span><div class="info"><div class="nmrow"><span class="nm">Adam Novák</span></div><div class="micro">vyrovnaný</div></div><span class="ico">🧤</span><span class="chev">›</span></div>
+    <div class="row"><span class="stripe s-und"></span><div class="info"><div class="nmrow"><span class="nm">Marek Tóth</span></div><div class="micro under">hral najmenej</div></div><span class="rtag">nehral 5×</span><span class="ico">🧤</span><span class="chev">›</span></div>
+    <div class="sec">HRÁČI V POLI<span>27</span></div>
+    <div class="row"><span class="stripe s-ovr"></span><div class="info"><div class="nmrow"><span class="nm">Lukáš Horváth</span></div><div class="micro over">hral najviac</div></div><span class="chev">›</span></div>
+    <div class="row"><span class="stripe s-ok"></span><div class="info"><div class="nmrow"><span class="nm">Jakub Varga</span><span class="pill p-new">NOVÝ</span></div><div class="micro">vyrovnaný</div></div><span class="chev">›</span></div>
+    <div class="row"><span class="stripe s-und"></span><div class="info"><div class="nmrow"><span class="nm">Samuel Lukáč</span></div><div class="micro under">hral menej</div></div><span class="rtag">nehral 4×</span><span class="chev">›</span></div>
+    <div class="row"><span class="stripe s-und"></span><div class="info"><div class="nmrow"><span class="nm muted">Martin Baláž</span><span class="pill p-pause">PAUZA · 20.6.–30.6.</span></div><div class="micro under">hral menej</div></div><span class="chev">›</span></div>
+  </div></div>
+</div>
+
+</body></html>
