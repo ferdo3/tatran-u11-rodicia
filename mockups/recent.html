@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="sk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>Posledné zápasy — 3 smery</title>
+<style>
+  :root{--green:#1F8B3F;--green-d:#0F5A28;--green-bg:#EAF3DE;--beige:#F1EFE8;--bd:#E4E2D9;--tx:#0A0C0B;--tx2:#5F5E5A;--muted:#8A8980;
+    --red:#B23B2E;--red-bg:#FBEEEC;--blue:#185FA5;--blue-bg:#E6F1FB;--purple:#7B3AA3;}
+  *{box-sizing:border-box;margin:0;padding:0;font-family:Inter,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;}
+  body{background:#cfcdc4;padding:22px;display:flex;gap:24px;flex-wrap:wrap;align-items:flex-start;justify-content:center;}
+  .col{display:flex;flex-direction:column;align-items:center;gap:10px;width:360px;}
+  .lbl{font-size:15px;font-weight:700;color:#1a1a1a;text-align:center;}
+  .lbl small{display:block;font-weight:400;color:#555;font-size:12px;margin-top:4px;line-height:1.45;}
+  .sheet{width:360px;background:#fff;border-radius:22px 22px 0 0;overflow:hidden;box-shadow:0 -8px 30px rgba(0,0,0,.18);border:1px solid #cbc9bf;}
+  .handle{width:40px;height:5px;background:#d8d6cd;border-radius:3px;margin:9px auto 4px;}
+  .head{font-size:18px;font-weight:700;color:var(--tx);padding:8px 18px 12px;display:flex;align-items:center;gap:8px;}
+  .head .cnt{color:var(--muted);font-weight:600;font-size:14px;}
+  .list{max-height:560px;overflow:hidden;}
+  /* team badge */
+  .tb{font-size:10px;font-weight:700;padding:2px 7px;border-radius:6px;flex:none;letter-spacing:.3px;}
+  .tb.a{background:var(--green-bg);color:var(--green-d);}.tb.b{background:#EFE4F6;color:var(--purple);}.tb.mix{background:#EDEBE3;color:var(--tx2);}
+  /* buttons */
+  .btnrow{display:flex;gap:7px;}
+  .ab{flex:1;display:flex;align-items:center;justify-content:center;gap:5px;height:38px;border-radius:10px;font-size:13px;font-weight:600;border:1px solid transparent;}
+  .ab.edit{background:var(--green-bg);color:var(--green-d);}
+  .ab.share{background:var(--blue-bg);color:var(--blue);}
+  .ab.del{background:var(--red-bg);color:var(--red);}
+  .ab.ic{flex:none;width:42px;}
+  .foot{padding:12px 18px 16px;}
+  .closeb{width:100%;height:42px;border-radius:12px;background:var(--beige);border:1px solid var(--bd);color:var(--tx2);font-size:14px;font-weight:600;}
+
+  /* ===== A: 2 riadky info + 3 labeled buttony ===== */
+  .a .row{padding:12px 16px;border-top:1px solid #F0EEE7;}
+  .a .row:first-child{border-top:none;}
+  .a .l1{display:flex;align-items:center;gap:8px;}
+  .a .dt{font-size:12px;font-weight:600;color:var(--muted);flex:none;}
+  .a .ev{font-size:16px;font-weight:700;color:var(--tx);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .a .l2{font-size:12.5px;color:var(--tx2);margin:3px 0 9px;}
+
+  /* ===== B: 1 denzný riadok + 3 ikonové buttony ===== */
+  .b .row{display:flex;align-items:center;gap:10px;padding:9px 14px;border-top:1px solid #F0EEE7;}
+  .b .row:first-child{border-top:none;}
+  .b .info{flex:1;min-width:0;}
+  .b .ev{font-size:15px;font-weight:700;color:var(--tx);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .b .meta{font-size:11.5px;color:var(--tx2);margin-top:1px;}
+  .b .ab{height:36px;}
+
+  /* ===== C: event-led + meta inline + tesné pill buttony ===== */
+  .c .row{padding:11px 16px 12px;border-top:1px solid #F0EEE7;}
+  .c .row:first-child{border-top:none;}
+  .c .top{display:flex;align-items:center;gap:8px;margin-bottom:2px;}
+  .c .ev{font-size:16px;font-weight:700;color:var(--tx);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .c .meta{font-size:12px;color:var(--tx2);margin-bottom:9px;}
+  .c .meta b{color:var(--muted);font-weight:600;}
+  .c .ab{height:36px;font-size:12.5px;border-radius:9px;}
+</style></head>
+<body>
+
+<!-- A -->
+<div class="col">
+  <div class="lbl">A — Vyvážený (2 riadky + labeled) <small>dátum·event / počet·GK / 3 labeled buttony. Najčitateľnejší; ~5-6 zápasov na obrazovku</small></div>
+  <div class="sheet a">
+    <div class="handle"></div>
+    <div class="head">📋 Posledné zápasy <span class="cnt">15</span></div>
+    <div class="list">
+      <div class="row"><div class="l1"><span class="dt">24.6.</span><span class="ev">Turnaj Bardejov</span><span class="tb mix" style="margin-left:auto">MIX</span></div><div class="l2">8 hráčov · 🧤 Marek T.</div><div class="btnrow"><button class="ab edit">✏️ Opraviť</button><button class="ab share">📤 Zdieľať</button><button class="ab del ic">🗑</button></div></div>
+      <div class="row"><div class="l1"><span class="dt">7.6.</span><span class="ev">Turnaj Miskolc</span><span class="tb a" style="margin-left:auto">A</span></div><div class="l2">13 hráčov · 🧤 Adam N.</div><div class="btnrow"><button class="ab edit">✏️ Opraviť</button><button class="ab share">📤 Zdieľať</button><button class="ab del ic">🗑</button></div></div>
+      <div class="row"><div class="l1"><span class="dt">6.6.</span><span class="ev">Turnaj Krompachy</span><span class="tb a" style="margin-left:auto">A</span></div><div class="l2">11 hráčov · 🧤 Adam N.</div><div class="btnrow"><button class="ab edit">✏️ Opraviť</button><button class="ab share">📤 Zdieľať</button><button class="ab del ic">🗑</button></div></div>
+      <div class="row"><div class="l1"><span class="dt">6.6.</span><span class="ev">Turnaj Svidník</span><span class="tb b" style="margin-left:auto">B</span></div><div class="l2">12 hráčov · 🧤 Eva K. · +host</div><div class="btnrow"><button class="ab edit">✏️ Opraviť</button><button class="ab share">📤 Zdieľať</button><button class="ab del ic">🗑</button></div></div>
+    </div>
+    <div class="foot"><button class="closeb">Zavrieť</button></div>
+  </div>
+</div>
+
+<!-- B -->
+<div class="col">
+  <div class="lbl">B — Kompaktný (1 riadok + ikony) <small>event + meta v jednom riadku, 3 IKONOVÉ buttony vpravo. NAJVIAC zápasov (~8-9); menej explicitné</small></div>
+  <div class="sheet b">
+    <div class="handle"></div>
+    <div class="head">📋 Posledné zápasy <span class="cnt">15</span></div>
+    <div class="list">
+      <div class="row"><div class="info"><div class="ev">Turnaj Bardejov</div><div class="meta">24.6. · MIX · 8 hráčov · 🧤 Marek T.</div></div><button class="ab edit ic">✏️</button><button class="ab share ic">📤</button><button class="ab del ic">🗑</button></div>
+      <div class="row"><div class="info"><div class="ev">Turnaj Miskolc</div><div class="meta">7.6. · A · 13 hráčov · 🧤 Adam N.</div></div><button class="ab edit ic">✏️</button><button class="ab share ic">📤</button><button class="ab del ic">🗑</button></div>
+      <div class="row"><div class="info"><div class="ev">Turnaj Krompachy</div><div class="meta">6.6. · A · 11 hráčov · 🧤 Adam N.</div></div><button class="ab edit ic">✏️</button><button class="ab share ic">📤</button><button class="ab del ic">🗑</button></div>
+      <div class="row"><div class="info"><div class="ev">Turnaj Svidník</div><div class="meta">6.6. · B · 12 hráčov · 🧤 Eva K. · +host</div></div><button class="ab edit ic">✏️</button><button class="ab share ic">📤</button><button class="ab del ic">🗑</button></div>
+      <div class="row"><div class="info"><div class="ev">MZ Moldava</div><div class="meta">2.6. · MIX · 20 hráčov · +host</div></div><button class="ab edit ic">✏️</button><button class="ab share ic">📤</button><button class="ab del ic">🗑</button></div>
+      <div class="row"><div class="info"><div class="ev">Turnaj Zlaté Moravce</div><div class="meta">30.5. · B · 13 hráčov</div></div><button class="ab edit ic">✏️</button><button class="ab share ic">📤</button><button class="ab del ic">🗑</button></div>
+    </div>
+    <div class="foot"><button class="closeb">Zavrieť</button></div>
+  </div>
+</div>
+
+<!-- C -->
+<div class="col">
+  <div class="lbl">C — Event-led (meta inline + tesné pills) <small>event veľký + meta jeden šedý riadok + 3 tesné pill buttony. Moderný stred; ~6-7 zápasov</small></div>
+  <div class="sheet c">
+    <div class="handle"></div>
+    <div class="head">📋 Posledné zápasy <span class="cnt">15</span></div>
+    <div class="list">
+      <div class="row"><div class="top"><span class="ev">Turnaj Bardejov</span><span class="tb mix" style="margin-left:auto">MIX</span></div><div class="meta"><b>24.6.</b> · 8 hráčov · 🧤 Marek T.</div><div class="btnrow"><button class="ab edit">✏️ Opraviť</button><button class="ab share">📤 Zdieľať</button><button class="ab del ic">🗑</button></div></div>
+      <div class="row"><div class="top"><span class="ev">Turnaj Miskolc</span><span class="tb a" style="margin-left:auto">A</span></div><div class="meta"><b>7.6.</b> · 13 hráčov · 🧤 Adam N.</div><div class="btnrow"><button class="ab edit">✏️ Opraviť</button><button class="ab share">📤 Zdieľať</button><button class="ab del ic">🗑</button></div></div>
+      <div class="row"><div class="top"><span class="ev">Turnaj Krompachy</span><span class="tb a" style="margin-left:auto">A</span></div><div class="meta"><b>6.6.</b> · 11 hráčov · 🧤 Adam N.</div><div class="btnrow"><button class="ab edit">✏️ Opraviť</button><button class="ab share">📤 Zdieľať</button><button class="ab del ic">🗑</button></div></div>
+      <div class="row"><div class="top"><span class="ev">Turnaj Svidník</span><span class="tb b" style="margin-left:auto">B</span></div><div class="meta"><b>6.6.</b> · 12 hráčov · 🧤 Eva K. · +host</div><div class="btnrow"><button class="ab edit">✏️ Opraviť</button><button class="ab share">📤 Zdieľať</button><button class="ab del ic">🗑</button></div></div>
+      <div class="row"><div class="top"><span class="ev">MZ Moldava</span><span class="tb mix" style="margin-left:auto">MIX</span></div><div class="meta"><b>2.6.</b> · 20 hráčov · +host</div><div class="btnrow"><button class="ab edit">✏️ Opraviť</button><button class="ab share">📤 Zdieľať</button><button class="ab del ic">🗑</button></div></div>
+    </div>
+    <div class="foot"><button class="closeb">Zavrieť</button></div>
+  </div>
+</div>
+
+</body></html>
