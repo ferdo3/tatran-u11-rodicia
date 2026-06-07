@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="sk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>Posledné zápasy — ⋯ overflow (UX/UI)</title>
+<style>
+  :root{--green:#1F8B3F;--green-d:#0F5A28;--green-bg:#E7F1DF;--beige:#F1EFE8;--bd:#E4E2D9;--tx:#0A0C0B;--tx2:#5F5E5A;--muted:#8A8980;
+    --red:#B23B2E;--red-bg:#FBEDEB;--blue:#185FA5;--blue-bg:#E6F1FB;--purple:#7B3AA3;}
+  *{box-sizing:border-box;margin:0;padding:0;font-family:Inter,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;}
+  body{background:#cfcdc4;padding:22px;display:flex;gap:30px;flex-wrap:wrap;align-items:flex-start;justify-content:center;}
+  .col{display:flex;flex-direction:column;align-items:center;gap:10px;width:380px;}
+  .lbl{font-size:15px;font-weight:700;color:#1a1a1a;text-align:center;}
+  .lbl small{display:block;font-weight:400;color:#555;font-size:12px;margin-top:4px;line-height:1.45;}
+  .sheet{width:380px;background:#fff;border-radius:22px 22px 0 0;overflow:hidden;box-shadow:0 -8px 30px rgba(0,0,0,.18);border:1px solid #cbc9bf;position:relative;}
+  .handle{width:40px;height:5px;background:#d8d6cd;border-radius:3px;margin:9px auto 4px;}
+  .head{font-size:18px;font-weight:700;color:var(--tx);padding:8px 18px 11px;display:flex;align-items:center;gap:8px;}
+  .head .cnt{color:var(--muted);font-weight:600;font-size:14px;}
+  .tb{font-size:10px;font-weight:700;padding:2px 8px;border-radius:6px;flex:none;letter-spacing:.3px;}
+  .tb.a{background:var(--green-bg);color:var(--green-d);}.tb.b{background:#EFE4F6;color:var(--purple);}.tb.mix{background:#EDEBE3;color:var(--tx2);}
+  /* riadok: event CELÝ + ⋯ vpravo */
+  .row{display:flex;align-items:center;gap:10px;padding:12px 14px 12px 18px;border-top:1px solid #F0EEE7;}
+  .row:first-of-type{border-top:none;}
+  .info{flex:1;min-width:0;}
+  .top{display:flex;align-items:center;gap:8px;}
+  .ev{font-size:15.5px;font-weight:700;color:var(--tx);line-height:1.25;}
+  .meta{font-size:12.5px;color:var(--tx2);margin-top:2px;}
+  .dots{flex:none;width:42px;height:42px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:transparent;border:none;color:var(--muted);}
+  .dots:active{background:#F0EEE7;}
+  .dots svg{width:22px;height:22px;}
+  .foot{padding:12px 18px 16px;}
+  .closeb{width:100%;height:42px;border-radius:12px;background:var(--beige);border:1px solid var(--bd);color:var(--tx2);font-size:14px;font-weight:600;}
+  /* === ACTION SHEET (po ťuku na ⋯) === */
+  .scrim{position:absolute;inset:0;background:rgba(0,0,0,.32);display:flex;align-items:flex-end;}
+  .asheet{width:100%;background:#fff;border-radius:20px 20px 0 0;padding:8px 14px 16px;box-shadow:0 -10px 30px rgba(0,0,0,.25);}
+  .as-handle{width:40px;height:5px;background:#d8d6cd;border-radius:3px;margin:8px auto 10px;}
+  .as-ctx{text-align:center;padding:4px 8px 14px;border-bottom:1px solid #F0EEE7;margin-bottom:10px;}
+  .as-ctx .e{font-size:15px;font-weight:700;color:var(--tx);}
+  .as-ctx .d{font-size:12.5px;color:var(--tx2);margin-top:2px;}
+  .ab{display:flex;align-items:center;gap:13px;width:100%;padding:14px 12px;border:none;background:transparent;border-radius:12px;font-size:16px;font-weight:600;color:var(--tx);text-align:left;}
+  .ab:active{background:#F4F2EB;}
+  .ab svg{width:23px;height:23px;flex:none;}
+  .ab.edit{color:var(--green-d);}.ab.share{color:var(--blue);}
+  .ab.del{color:var(--red);}
+  .as-sep{height:1px;background:#F0EEE7;margin:8px 12px;}
+  .as-cancel{width:100%;margin-top:8px;height:50px;border-radius:14px;background:var(--beige);border:1px solid var(--bd);color:var(--tx2);font-size:15px;font-weight:600;}
+</style></head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs>
+  <symbol id="dots" viewBox="0 0 24 24"><g fill="currentColor"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></g></symbol>
+  <symbol id="e" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L18.5 9.5a2 2 0 0 0-2.8-2.8L5 17.2V20z"/><path d="M14 7l3 3"/></g></symbol>
+  <symbol id="s" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5v11"/><path d="M8 7l4-4 4 4"/><path d="M5 12.5V19a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6.5"/></g></symbol>
+  <symbol id="t" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16"/><path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/><path d="M6 7l1 13a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1l1-13"/><path d="M10 11v6M14 11v6"/></g></symbol>
+</defs></svg>
+
+<script>
+  var D=[
+    ["Turnaj Miskolc Madarsko","07.06.2026","a","A","13 hráčov"],
+    ["MZ Prostejovská PO (Moldava nad Bodvou)","02.06.2026","mix","MIX","20 hráčov · +host"],
+    ["Turnaj Svidník","06.06.2026","b","B","12 hráčov · +host"],
+    ["Turnaj Zlaté Moravce","30.05.2026","b","B","13 hráčov"],
+    ["Turnaj Stropkov","24.05.2026","a","A","12 hráčov"],
+    ["Lokomotíva Košice","20.05.2026","b","B","16 hráčov"]
+  ];
+  function dotsBtn(){return '<button class="dots"><svg><use href="#dots"/></svg></button>';}
+  function rows(){return D.map(function(d){
+    return '<div class="row"><div class="info"><div class="top"><span class="ev">'+d[0]+'</span><span class="tb '+d[2]+'">'+d[3]+'</span></div><div class="meta">'+d[1]+' · '+d[4]+'</div></div>'+dotsBtn()+'</div>';
+  }).join('');}
+  window.addEventListener('DOMContentLoaded',function(){
+    document.getElementById('list1').innerHTML=rows();
+    document.getElementById('list2').innerHTML=rows();
+  });
+</script>
+
+<!-- STAV 1: zoznam s ⋯ -->
+<div class="col">
+  <div class="lbl">① Zoznam — názov CELÝ + „⋯" vpravo <small>⋯ zaberá ~nič → celý názov podujatia sa zmestí; čistý, scannovateľný riadok</small></div>
+  <div class="sheet"><div class="handle"></div><div class="head">📋 Posledné zápasy <span class="cnt">15</span></div><div id="list1"></div><div class="foot"><button class="closeb">Zavrieť</button></div></div>
+</div>
+
+<!-- STAV 2: action sheet otvorený -->
+<div class="col">
+  <div class="lbl">② Po ťuku na ⋯ — bottom-sheet s 3 akciami <small>kontext (názov+dátum) hore; Opraviť/Zdieľať, Vymazať oddelené + červené (iOS deštrukcia)</small></div>
+  <div class="sheet"><div class="handle"></div><div class="head">📋 Posledné zápasy <span class="cnt">15</span></div><div id="list2"></div><div class="foot"><button class="closeb">Zavrieť</button></div>
+    <div class="scrim"><div class="asheet">
+      <div class="as-handle"></div>
+      <div class="as-ctx"><div class="e">Turnaj Miskolc Madarsko</div><div class="d">07.06.2026 · 13 hráčov</div></div>
+      <button class="ab edit"><svg><use href="#e"/></svg>Opraviť účasť</button>
+      <button class="ab share"><svg><use href="#s"/></svg>Zdieľať nomináciu</button>
+      <div class="as-sep"></div>
+      <button class="ab del"><svg><use href="#t"/></svg>Vymazať zápas</button>
+      <button class="as-cancel">Zrušiť</button>
+    </div></div>
+  </div>
+</div>
+
+</body></html>
