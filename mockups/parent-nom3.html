@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="sk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<title>Parent nominácia v3 — Miskolc</title>
+<style>
+  :root{--green:#1F8B3F;--green-d:#0F5A28;--beige:#F1EFE8;--bd:#E7E5DC;--tx:#0A0C0B;--tx2:#5F5E5A;
+    --amber-bg:#FAF1DC;--amber:#9A5B12;--amber-x:#E0A23C;--zebra:#F8F6F0;--num:#B4B2A8;}
+  *{box-sizing:border-box;margin:0;padding:0;font-family:Inter,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;}
+  body{background:#cfcdc4;padding:24px;display:flex;gap:26px;flex-wrap:wrap;align-items:flex-start;justify-content:center;}
+  .col{display:flex;flex-direction:column;align-items:center;gap:10px;width:384px;}
+  .lbl{font-size:15px;font-weight:700;color:#1a1a1a;text-align:center;}
+  .lbl small{display:block;font-weight:400;color:#555;font-size:12px;margin-top:4px;line-height:1.45;}
+  .phone{width:384px;background:var(--beige);border-radius:24px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.22);border:1px solid #c9c7bd;padding:16px;}
+  /* HERO — Miskolc štýl (gradient + ⚽ emoji watermark) */
+  .hero{position:relative;overflow:hidden;background:linear-gradient(135deg,#0F5A28 0%,#1F8B3F 55%,#0F5A28 100%);
+    border-radius:18px;padding:20px;color:#fff;}
+  .hero::after{content:"⚽";position:absolute;right:-22px;top:-30px;font-size:185px;line-height:1;opacity:.07;pointer-events:none;}
+  .kick{font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.78);position:relative;}
+  .ev{font-size:25px;font-weight:800;line-height:1.12;margin:7px 0 12px;position:relative;}
+  .meta{display:flex;align-items:center;gap:9px;position:relative;flex-wrap:wrap;}
+  .mdate{font-size:15px;font-weight:600;}
+  .mpill{font-size:12.5px;font-weight:600;padding:4px 11px;border-radius:9px;}
+  .mpill.day{background:rgba(224,162,60,.30);color:#FCDFA6;}
+  .mpill.cnt{background:rgba(255,255,255,.18);color:#fff;}
+  /* LIST */
+  .listcard{background:#fff;border:1px solid var(--bd);border-radius:16px;overflow:hidden;margin-top:16px;}
+  .lhead{font-size:12px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--tx2);padding:13px 20px 9px;}
+  .pr{display:flex;align-items:center;gap:14px;padding:13px 20px;border-top:1px solid #F2F0E9;}
+  .pr:first-of-type{border-top:none;}
+  .pr.gk-tint{background:var(--amber-bg);}
+  .num{color:var(--num);font-size:13px;font-weight:700;width:16px;flex:none;text-align:right;}
+  .numc{width:25px;height:25px;flex:none;border-radius:50%;background:#F0EEE6;color:var(--tx2);font-size:12.5px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+  .pnm{font-size:16.5px;font-weight:600;color:var(--tx);}
+  .pr.gk-tint .pnm{color:var(--amber);}
+  .ric{margin-left:auto;font-size:20px;flex:none;}
+  .ric.ball{filter:grayscale(.18);opacity:.9;}
+  .foot{margin-top:14px;display:flex;align-items:center;justify-content:center;gap:7px;color:var(--tx2);font-size:13px;font-weight:600;}
+</style></head>
+<body>
+
+<!-- M1: GK jemný amber tint, ikony vpravo -->
+<div class="col">
+  <div class="lbl">M1 — GK jemný amber tint <small>1-8 v jednom zozname; GK (#8) jemné amber pozadie + 🧤 vpravo; poľní ⚽ vpravo (ako trener)</small></div>
+  <div class="phone">
+    <div class="hero">
+      <div class="kick">Nominácia</div>
+      <div class="ev">Turnaj Bardejov</div>
+      <div class="meta"><span class="mdate">22. jún 2026</span><span class="mpill day">sobota</span><span class="mpill cnt">8 hráčov</span></div>
+    </div>
+    <div class="listcard">
+      <div class="lhead">Zostava</div>
+      <div class="pr"><span class="num">1</span><span class="pnm">Adam N.</span><span class="ric ball">⚽</span></div>
+      <div class="pr"><span class="num">2</span><span class="pnm">Peter K.</span><span class="ric ball">⚽</span></div>
+      <div class="pr"><span class="num">3</span><span class="pnm">Lukáš H.</span><span class="ric ball">⚽</span></div>
+      <div class="pr"><span class="num">4</span><span class="pnm">Jakub V.</span><span class="ric ball">⚽</span></div>
+      <div class="pr"><span class="num">5</span><span class="pnm">Samuel L.</span><span class="ric ball">⚽</span></div>
+      <div class="pr"><span class="num">6</span><span class="pnm">Dávid Č.</span><span class="ric ball">⚽</span></div>
+      <div class="pr"><span class="num">7</span><span class="pnm">Martin B.</span><span class="ric ball">⚽</span></div>
+      <div class="pr gk-tint"><span class="num">8</span><span class="pnm">Marek T.</span><span class="ric">🧤</span></div>
+    </div>
+    <div class="foot">⚽ Tatran U11</div>
+  </div>
+</div>
+
+<!-- M2: bez tintu, plná integrácia -->
+<div class="col">
+  <div class="lbl">M2 — bez tintu (plná integrácia) <small>GK rovnaký biely riadok ako ostatní; odlišuje ho len 🧤 vpravo + číslo 8. Najčistejšie</small></div>
+  <div class="phone">
+    <div class="hero">
+      <div class="kick">Nominácia</div>
+      <div class="ev">Turnaj Bardejov</div>
+      <div class="meta"><span class="mdate">22. jún 2026</span><span class="mpill day">sobota</span><span class="mpill cnt">8 hráčov</span></div>
+    </div>
+    <div class="listcard">
+      <div class="lhead">Zostava</div>
+      <div class="pr"><span class="num">1</span><span class="pnm">Adam N.</span><span class="ric ball">⚽</span></div>
+      <div class="pr"><span class="num">2</span><span class="pnm">Peter K.</span><span class="ric ball">⚽</span></div>
+      <div class="pr"><span class="num">3</span><span class="pnm">Lukáš H.</span><span class="ric ball">⚽</span></div>
+      <div class="pr"><span class="num">4</span><span class="pnm">Jakub V.</span><span class="ric ball">⚽</span></div>
+      <div class="pr"><span class="num">5</span><span class="pnm">Samuel L.</span><span class="ric ball">⚽</span></div>
+      <div class="pr"><span class="num">6</span><span class="pnm">Dávid Č.</span><span class="ric ball">⚽</span></div>
+      <div class="pr"><span class="num">7</span><span class="pnm">Martin B.</span><span class="ric ball">⚽</span></div>
+      <div class="pr"><span class="num">8</span><span class="pnm">Marek T.</span><span class="ric">🧤</span></div>
+    </div>
+    <div class="foot">⚽ Tatran U11</div>
+  </div>
+</div>
+
+<!-- M3: číslo v krúžku -->
+<div class="col">
+  <div class="lbl">M3 — číslo v krúžku <small>poradové čísla v jemnom krúžku (dres-feel); GK #8 amber tint + 🧤; poľní ⚽</small></div>
+  <div class="phone">
+    <div class="hero">
+      <div class="kick">Nominácia</div>
+      <div class="ev">Turnaj Bardejov</div>
+      <div class="meta"><span class="mdate">22. jún 2026</span><span class="mpill day">sobota</span><span class="mpill cnt">8 hráčov</span></div>
+    </div>
+    <div class="listcard">
+      <div class="lhead">Zostava</div>
+      <div class="pr"><span class="numc">1</span><span class="pnm">Adam N.</span><span class="ric ball">⚽</span></div>
+      <div class="pr"><span class="numc">2</span><span class="pnm">Peter K.</span><span class="ric ball">⚽</span></div>
+      <div class="pr"><span class="numc">3</span><span class="pnm">Lukáš H.</span><span class="ric ball">⚽</span></div>
+      <div class="pr"><span class="numc">4</span><span class="pnm">Jakub V.</span><span class="ric ball">⚽</span></div>
+      <div class="pr"><span class="numc">5</span><span class="pnm">Samuel L.</span><span class="ric ball">⚽</span></div>
+      <div class="pr"><span class="numc">6</span><span class="pnm">Dávid Č.</span><span class="ric ball">⚽</span></div>
+      <div class="pr"><span class="numc">7</span><span class="pnm">Martin B.</span><span class="ric ball">⚽</span></div>
+      <div class="pr gk-tint"><span class="numc" style="background:#F2E6CC;color:var(--amber)">8</span><span class="pnm">Marek T.</span><span class="ric">🧤</span></div>
+    </div>
+    <div class="foot">⚽ Tatran U11</div>
+  </div>
+</div>
+
+</body></html>
