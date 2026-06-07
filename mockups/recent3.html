@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="sk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>Posledné zápasy — čitateľnosť (UX/UI konsenzus)</title>
+<style>
+  :root{--green:#1F8B3F;--green-d:#0F5A28;--green-bg:#E7F1DF;--beige:#F1EFE8;--bd:#E4E2D9;--tx:#0A0C0B;--tx2:#5F5E5A;--muted:#8A8980;
+    --red:#B23B2E;--red-bg:#FBEDEB;--blue:#185FA5;--blue-bg:#E6F1FB;--purple:#7B3AA3;}
+  *{box-sizing:border-box;margin:0;padding:0;font-family:Inter,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;}
+  body{background:#cfcdc4;padding:22px;display:flex;gap:24px;flex-wrap:wrap;align-items:flex-start;justify-content:center;}
+  .col{display:flex;flex-direction:column;align-items:center;gap:10px;width:368px;}
+  .lbl{font-size:15px;font-weight:700;color:#1a1a1a;text-align:center;}
+  .lbl small{display:block;font-weight:400;color:#555;font-size:12px;margin-top:4px;line-height:1.45;}
+  .sheet{width:368px;background:#fff;border-radius:22px 22px 0 0;overflow:hidden;box-shadow:0 -8px 30px rgba(0,0,0,.18);border:1px solid #cbc9bf;}
+  .handle{width:40px;height:5px;background:#d8d6cd;border-radius:3px;margin:9px auto 4px;}
+  .head{font-size:18px;font-weight:700;color:var(--tx);padding:8px 18px 11px;display:flex;align-items:center;gap:8px;}
+  .head .cnt{color:var(--muted);font-weight:600;font-size:14px;}
+  .tb{font-size:10px;font-weight:700;padding:2px 8px;border-radius:6px;flex:none;letter-spacing:.3px;}
+  .tb.a{background:var(--green-bg);color:var(--green-d);}.tb.b{background:#EFE4F6;color:var(--purple);}.tb.mix{background:#EDEBE3;color:var(--tx2);}
+  /* event = PLNÝ názov, zalomí sa (nie ellipsis) */
+  .ev{font-size:16px;font-weight:700;color:var(--tx);line-height:1.25;}
+  .meta{font-size:12.5px;color:var(--tx2);margin-top:3px;}
+  .row{padding:13px 16px;border-top:1px solid #F0EEE7;}
+  .row:first-of-type{border-top:none;}
+  .top{display:flex;align-items:flex-start;gap:9px;}
+  .top .ev{flex:1;min-width:0;}
+  .top .tb{margin-top:2px;}
+  svg{display:block;}
+  /* buttony */
+  .btnrow{display:flex;gap:8px;margin-top:11px;}
+  .lb{flex:1;display:flex;align-items:center;justify-content:center;gap:7px;height:42px;border-radius:11px;font-size:13.5px;font-weight:600;border:none;}
+  .lb svg{width:18px;height:18px;}
+  .lb.edit{background:var(--green-bg);color:var(--green-d);}
+  .lb.share{background:var(--blue-bg);color:var(--blue);}
+  .lb.del{background:var(--red-bg);color:var(--red);}
+  .ic{flex:none;width:42px;height:42px;display:flex;align-items:center;justify-content:center;border-radius:11px;border:none;}
+  .ic svg{width:20px;height:20px;}
+  .ic.edit{background:var(--green-bg);color:var(--green-d);}
+  .ic.share{background:var(--blue-bg);color:var(--blue);}
+  .ic.del{background:var(--red-bg);color:var(--red);}
+  .foot{padding:12px 18px 16px;}
+  .closeb{width:100%;height:42px;border-radius:12px;background:var(--beige);border:1px solid var(--bd);color:var(--tx2);font-size:14px;font-weight:600;}
+</style></head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs>
+  <symbol id="e" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L18.5 9.5a2 2 0 0 0-2.8-2.8L5 17.2V20z"/><path d="M14 7l3 3"/></g></symbol>
+  <symbol id="s" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5v11"/><path d="M8 7l4-4 4 4"/><path d="M5 12.5V19a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6.5"/></g></symbol>
+  <symbol id="t" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16"/><path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/><path d="M6 7l1 13a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1l1-13"/><path d="M10 11v6M14 11v6"/></g></symbol>
+</defs></svg>
+
+<script>
+  var D=[
+    ["Turnaj Miskolc Madarsko","07.06.2026","a","A","13 hráčov",false],
+    ["MZ Prostejovská PO (Moldava nad Bodvou)","02.06.2026","mix","MIX","20 hráčov · +host",true],
+    ["Turnaj Svidník","06.06.2026","b","B","12 hráčov · +host",true],
+    ["Turnaj Zlaté Moravce","30.05.2026","b","B","13 hráčov",false]
+  ];
+  function ic(id){return '<svg><use href="#'+id+'"/></svg>';}
+  function rows(kind){
+    return D.map(function(d){
+      var top='<div class="top"><span class="ev">'+d[0]+'</span><span class="tb '+d[2]+'">'+d[3]+'</span></div>'+
+              '<div class="meta">'+d[1]+' · '+d[4]+'</div>';
+      var acts;
+      if(kind==='M1') acts='<div class="btnrow"><button class="lb edit">'+ic('e')+'Opraviť účasť</button><button class="lb share">'+ic('s')+'Zdieľať</button><button class="ic del">'+ic('t')+'</button></div>';
+      if(kind==='M2') acts='<div class="btnrow"><button class="ic edit">'+ic('e')+'</button><button class="ic share">'+ic('s')+'</button><button class="ic del">'+ic('t')+'</button><span style="flex:1"></span></div>';
+      if(kind==='M3') acts='<div class="btnrow"><button class="lb edit" style="flex:2">'+ic('e')+'Opraviť účasť</button><button class="ic share">'+ic('s')+'</button><button class="ic del">'+ic('t')+'</button></div>';
+      return '<div class="row">'+top+acts+'</div>';
+    }).join('');
+  }
+  window.addEventListener('DOMContentLoaded',function(){
+    document.getElementById('m1').innerHTML=rows('M1');
+    document.getElementById('m2').innerHTML=rows('M2');
+    document.getElementById('m3').innerHTML=rows('M3');
+  });
+</script>
+
+<div class="col">
+  <div class="lbl">M1 — Labeled rad (max jasnosť) <small>event CELÝ (zalomí sa) + celý dátum / [Opraviť účasť][Zdieľať] labeled + kôš ikona. Najexplicitnejšie pre netech trénera</small></div>
+  <div class="sheet"><div class="handle"></div><div class="head">📋 Posledné zápasy <span class="cnt">15</span></div><div id="m1"></div><div class="foot"><button class="closeb">Zavrieť</button></div></div>
+</div>
+
+<div class="col">
+  <div class="lbl">M2 — Ikonový rad (najčistejšie) <small>event CELÝ + celý dátum / 3 flat-icon chip buttony (vľavo, nie roztiahnuté). Moderné, ľahké</small></div>
+  <div class="sheet"><div class="handle"></div><div class="head">📋 Posledné zápasy <span class="cnt">15</span></div><div id="m2"></div><div class="foot"><button class="closeb">Zavrieť</button></div></div>
+</div>
+
+<div class="col">
+  <div class="lbl">M3 — Hierarchia (UX best-practice) <small>event CELÝ + celý dátum / „Opraviť účasť" PRIMÁRNE (široké) + share/kôš ikony (sekundárne, deštruktívne tlmené). Konsenzus UX</small></div>
+  <div class="sheet"><div class="handle"></div><div class="head">📋 Posledné zápasy <span class="cnt">15</span></div><div id="m3"></div><div class="foot"><button class="closeb">Zavrieť</button></div></div>
+</div>
+
+</body></html>
