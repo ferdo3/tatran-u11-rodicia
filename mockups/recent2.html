@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="sk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>Posledné zápasy — B varianty (flat ikony, bez GK)</title>
+<style>
+  :root{--green:#1F8B3F;--green-d:#0F5A28;--green-bg:#E7F1DF;--beige:#F1EFE8;--bd:#E4E2D9;--tx:#0A0C0B;--tx2:#5F5E5A;--muted:#8A8980;
+    --red:#B23B2E;--red-bg:#FBEDEB;--blue:#185FA5;--blue-bg:#E6F1FB;--purple:#7B3AA3;}
+  *{box-sizing:border-box;margin:0;padding:0;font-family:Inter,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;}
+  body{background:#cfcdc4;padding:22px;display:flex;gap:24px;flex-wrap:wrap;align-items:flex-start;justify-content:center;}
+  .col{display:flex;flex-direction:column;align-items:center;gap:10px;width:360px;}
+  .lbl{font-size:15px;font-weight:700;color:#1a1a1a;text-align:center;}
+  .lbl small{display:block;font-weight:400;color:#555;font-size:12px;margin-top:4px;line-height:1.45;}
+  .sheet{width:360px;background:#fff;border-radius:22px 22px 0 0;overflow:hidden;box-shadow:0 -8px 30px rgba(0,0,0,.18);border:1px solid #cbc9bf;}
+  .handle{width:40px;height:5px;background:#d8d6cd;border-radius:3px;margin:9px auto 4px;}
+  .head{font-size:18px;font-weight:700;color:var(--tx);padding:8px 18px 11px;display:flex;align-items:center;gap:8px;}
+  .head .cnt{color:var(--muted);font-weight:600;font-size:14px;}
+  .tb{font-size:10px;font-weight:700;padding:2px 7px;border-radius:6px;flex:none;letter-spacing:.3px;}
+  .tb.a{background:var(--green-bg);color:var(--green-d);}.tb.b{background:#EFE4F6;color:var(--purple);}.tb.mix{background:#EDEBE3;color:var(--tx2);}
+  .ev{font-size:15px;font-weight:700;color:var(--tx);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .meta{font-size:12px;color:var(--tx2);}
+  .acts{display:flex;gap:6px;flex:none;}
+  /* flat icon buttony */
+  .ic{width:38px;height:38px;flex:none;display:flex;align-items:center;justify-content:center;border-radius:10px;}
+  .ic svg{width:20px;height:20px;}
+  .ic.edit{color:var(--green-d);}.ic.share{color:var(--blue);}.ic.del{color:var(--red);}
+  .ic.chip.edit{background:var(--green-bg);}.ic.chip.share{background:var(--blue-bg);}.ic.chip.del{background:var(--red-bg);}
+  .foot{padding:11px 18px 16px;}
+  .closeb{width:100%;height:42px;border-radius:12px;background:var(--beige);border:1px solid var(--bd);color:var(--tx2);font-size:14px;font-weight:600;}
+  /* B1/B2: 2-line */
+  .row2{display:flex;align-items:center;gap:10px;padding:9px 14px;border-top:1px solid #F0EEE7;}
+  .row2:first-of-type{border-top:none;}
+  .row2 .info{flex:1;min-width:0;}
+  .row2 .top{display:flex;align-items:center;gap:7px;}
+  /* B3: 1-line */
+  .row1{display:flex;align-items:center;gap:9px;padding:7px 14px;border-top:1px solid #F0EEE7;}
+  .row1:first-of-type{border-top:none;}
+  .row1 .info{flex:1;min-width:0;display:flex;align-items:baseline;gap:8px;}
+  .row1 .meta{flex:none;}
+  .row1 .ic{width:34px;height:34px;}.row1 .ic svg{width:19px;height:19px;}
+</style></head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs>
+  <symbol id="ic-edit" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L18.5 9.5a2 2 0 0 0-2.8-2.8L5 17.2V20z"/><path d="M14 7l3 3"/></g></symbol>
+  <symbol id="ic-share" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5v11"/><path d="M8 7l4-4 4 4"/><path d="M5 12.5V19a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6.5"/></g></symbol>
+  <symbol id="ic-trash" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16"/><path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/><path d="M6 7l1 13a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1l1-13"/><path d="M10 11v6M14 11v6"/></g></symbol>
+</defs></svg>
+
+<!-- B1: chip ikony -->
+<div class="col">
+  <div class="lbl">B1 — Chip ikony (jemný farebný bg) <small>2 tesné riadky (event / meta) + flat ikony v jemných farebných štvorcoch. Jasná tap-plocha, kompaktné</small></div>
+  <div class="sheet">
+    <div class="handle"></div><div class="head">📋 Posledné zápasy <span class="cnt">15</span></div>
+    <div>
+      <div class="row2"><div class="info"><div class="top"><span class="ev">Turnaj Bardejov</span><span class="tb mix">MIX</span></div><div class="meta">24.6. · 8 hráčov</div></div><div class="acts"><span class="ic chip edit"><svg><use href="#ic-edit"/></svg></span><span class="ic chip share"><svg><use href="#ic-share"/></svg></span><span class="ic chip del"><svg><use href="#ic-trash"/></svg></span></div></div>
+      <div class="row2"><div class="info"><div class="top"><span class="ev">Turnaj Miskolc</span><span class="tb a">A</span></div><div class="meta">7.6. · 13 hráčov</div></div><div class="acts"><span class="ic chip edit"><svg><use href="#ic-edit"/></svg></span><span class="ic chip share"><svg><use href="#ic-share"/></svg></span><span class="ic chip del"><svg><use href="#ic-trash"/></svg></span></div></div>
+      <div class="row2"><div class="info"><div class="top"><span class="ev">Turnaj Krompachy</span><span class="tb a">A</span></div><div class="meta">6.6. · 11 hráčov</div></div><div class="acts"><span class="ic chip edit"><svg><use href="#ic-edit"/></svg></span><span class="ic chip share"><svg><use href="#ic-share"/></svg></span><span class="ic chip del"><svg><use href="#ic-trash"/></svg></span></div></div>
+      <div class="row2"><div class="info"><div class="top"><span class="ev">Turnaj Svidník</span><span class="tb b">B</span></div><div class="meta">6.6. · 12 hráčov · +host</div></div><div class="acts"><span class="ic chip edit"><svg><use href="#ic-edit"/></svg></span><span class="ic chip share"><svg><use href="#ic-share"/></svg></span><span class="ic chip del"><svg><use href="#ic-trash"/></svg></span></div></div>
+      <div class="row2"><div class="info"><div class="top"><span class="ev">MZ Moldava</span><span class="tb mix">MIX</span></div><div class="meta">2.6. · 20 hráčov · +host</div></div><div class="acts"><span class="ic chip edit"><svg><use href="#ic-edit"/></svg></span><span class="ic chip share"><svg><use href="#ic-share"/></svg></span><span class="ic chip del"><svg><use href="#ic-trash"/></svg></span></div></div>
+      <div class="row2"><div class="info"><div class="top"><span class="ev">Turnaj Zlaté Moravce</span><span class="tb b">B</span></div><div class="meta">30.5. · 13 hráčov</div></div><div class="acts"><span class="ic chip edit"><svg><use href="#ic-edit"/></svg></span><span class="ic chip share"><svg><use href="#ic-share"/></svg></span><span class="ic chip del"><svg><use href="#ic-trash"/></svg></span></div></div>
+      <div class="row2"><div class="info"><div class="top"><span class="ev">Turnaj Stropkov</span><span class="tb a">A</span></div><div class="meta">24.5. · 12 hráčov</div></div><div class="acts"><span class="ic chip edit"><svg><use href="#ic-edit"/></svg></span><span class="ic chip share"><svg><use href="#ic-share"/></svg></span><span class="ic chip del"><svg><use href="#ic-trash"/></svg></span></div></div>
+    </div>
+    <div class="foot"><button class="closeb">Zavrieť</button></div>
+  </div>
+</div>
+
+<!-- B2: plain ikony -->
+<div class="col">
+  <div class="lbl">B2 — Plain ikony (bez bg) <small>tie isté 2 riadky, ale ikony čisté bez pozadia → najľahší/najtichší vzhľad</small></div>
+  <div class="sheet">
+    <div class="handle"></div><div class="head">📋 Posledné zápasy <span class="cnt">15</span></div>
+    <div>
+      <div class="row2"><div class="info"><div class="top"><span class="ev">Turnaj Bardejov</span><span class="tb mix">MIX</span></div><div class="meta">24.6. · 8 hráčov</div></div><div class="acts"><span class="ic edit"><svg><use href="#ic-edit"/></svg></span><span class="ic share"><svg><use href="#ic-share"/></svg></span><span class="ic del"><svg><use href="#ic-trash"/></svg></span></div></div>
+      <div class="row2"><div class="info"><div class="top"><span class="ev">Turnaj Miskolc</span><span class="tb a">A</span></div><div class="meta">7.6. · 13 hráčov</div></div><div class="acts"><span class="ic edit"><svg><use href="#ic-edit"/></svg></span><span class="ic share"><svg><use href="#ic-share"/></svg></span><span class="ic del"><svg><use href="#ic-trash"/></svg></span></div></div>
+      <div class="row2"><div class="info"><div class="top"><span class="ev">Turnaj Krompachy</span><span class="tb a">A</span></div><div class="meta">6.6. · 11 hráčov</div></div><div class="acts"><span class="ic edit"><svg><use href="#ic-edit"/></svg></span><span class="ic share"><svg><use href="#ic-share"/></svg></span><span class="ic del"><svg><use href="#ic-trash"/></svg></span></div></div>
+      <div class="row2"><div class="info"><div class="top"><span class="ev">Turnaj Svidník</span><span class="tb b">B</span></div><div class="meta">6.6. · 12 hráčov · +host</div></div><div class="acts"><span class="ic edit"><svg><use href="#ic-edit"/></svg></span><span class="ic share"><svg><use href="#ic-share"/></svg></span><span class="ic del"><svg><use href="#ic-trash"/></svg></span></div></div>
+      <div class="row2"><div class="info"><div class="top"><span class="ev">MZ Moldava</span><span class="tb mix">MIX</span></div><div class="meta">2.6. · 20 hráčov · +host</div></div><div class="acts"><span class="ic edit"><svg><use href="#ic-edit"/></svg></span><span class="ic share"><svg><use href="#ic-share"/></svg></span><span class="ic del"><svg><use href="#ic-trash"/></svg></span></div></div>
+      <div class="row2"><div class="info"><div class="top"><span class="ev">Turnaj Zlaté Moravce</span><span class="tb b">B</span></div><div class="meta">30.5. · 13 hráčov</div></div><div class="acts"><span class="ic edit"><svg><use href="#ic-edit"/></svg></span><span class="ic share"><svg><use href="#ic-share"/></svg></span><span class="ic del"><svg><use href="#ic-trash"/></svg></span></div></div>
+      <div class="row2"><div class="info"><div class="top"><span class="ev">Turnaj Stropkov</span><span class="tb a">A</span></div><div class="meta">24.5. · 12 hráčov</div></div><div class="acts"><span class="ic edit"><svg><use href="#ic-edit"/></svg></span><span class="ic share"><svg><use href="#ic-share"/></svg></span><span class="ic del"><svg><use href="#ic-trash"/></svg></span></div></div>
+    </div>
+    <div class="foot"><button class="closeb">Zavrieť</button></div>
+  </div>
+</div>
+
+<!-- B3: 1-line ultra-kompakt -->
+<div class="col">
+  <div class="lbl">B3 — 1-riadok ultra-kompakt <small>event + meta v JEDNOM riadku + ikony → NAJNIŽŠIA výška riadku (~9-10 zápasov). Najhustejší</small></div>
+  <div class="sheet">
+    <div class="handle"></div><div class="head">📋 Posledné zápasy <span class="cnt">15</span></div>
+    <div>
+      <div class="row1"><div class="info"><span class="ev">Turnaj Bardejov</span><span class="meta">24.6. · MIX · 8</span></div><div class="acts"><span class="ic edit"><svg><use href="#ic-edit"/></svg></span><span class="ic share"><svg><use href="#ic-share"/></svg></span><span class="ic del"><svg><use href="#ic-trash"/></svg></span></div></div>
+      <div class="row1"><div class="info"><span class="ev">Turnaj Miskolc</span><span class="meta">7.6. · A · 13</span></div><div class="acts"><span class="ic edit"><svg><use href="#ic-edit"/></svg></span><span class="ic share"><svg><use href="#ic-share"/></svg></span><span class="ic del"><svg><use href="#ic-trash"/></svg></span></div></div>
+      <div class="row1"><div class="info"><span class="ev">Turnaj Krompachy</span><span class="meta">6.6. · A · 11</span></div><div class="acts"><span class="ic edit"><svg><use href="#ic-edit"/></svg></span><span class="ic share"><svg><use href="#ic-share"/></svg></span><span class="ic del"><svg><use href="#ic-trash"/></svg></span></div></div>
+      <div class="row1"><div class="info"><span class="ev">Turnaj Svidník</span><span class="meta">6.6. · B · 12 · +host</span></div><div class="acts"><span class="ic edit"><svg><use href="#ic-edit"/></svg></span><span class="ic share"><svg><use href="#ic-share"/></svg></span><span class="ic del"><svg><use href="#ic-trash"/></svg></span></div></div>
+      <div class="row1"><div class="info"><span class="ev">MZ Moldava</span><span class="meta">2.6. · MIX · 20</span></div><div class="acts"><span class="ic edit"><svg><use href="#ic-edit"/></svg></span><span class="ic share"><svg><use href="#ic-share"/></svg></span><span class="ic del"><svg><use href="#ic-trash"/></svg></span></div></div>
+      <div class="row1"><div class="info"><span class="ev">Turnaj Zlaté Moravce</span><span class="meta">30.5. · B · 13</span></div><div class="acts"><span class="ic edit"><svg><use href="#ic-edit"/></svg></span><span class="ic share"><svg><use href="#ic-share"/></svg></span><span class="ic del"><svg><use href="#ic-trash"/></svg></span></div></div>
+      <div class="row1"><div class="info"><span class="ev">Turnaj Stropkov</span><span class="meta">24.5. · A · 12</span></div><div class="acts"><span class="ic edit"><svg><use href="#ic-edit"/></svg></span><span class="ic share"><svg><use href="#ic-share"/></svg></span><span class="ic del"><svg><use href="#ic-trash"/></svg></span></div></div>
+      <div class="row1"><div class="info"><span class="ev">Turnaj Stropkov</span><span class="meta">23.5. · A · 12</span></div><div class="acts"><span class="ic edit"><svg><use href="#ic-edit"/></svg></span><span class="ic share"><svg><use href="#ic-share"/></svg></span><span class="ic del"><svg><use href="#ic-trash"/></svg></span></div></div>
+      <div class="row1"><div class="info"><span class="ev">Lokomotíva Košice</span><span class="meta">20.5. · B · 16</span></div><div class="acts"><span class="ic edit"><svg><use href="#ic-edit"/></svg></span><span class="ic share"><svg><use href="#ic-share"/></svg></span><span class="ic del"><svg><use href="#ic-trash"/></svg></span></div></div>
+    </div>
+    <div class="foot"><button class="closeb">Zavrieť</button></div>
+  </div>
+</div>
+
+</body></html>
