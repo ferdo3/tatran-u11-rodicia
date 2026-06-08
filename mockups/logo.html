@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;font-family:Inter,-apple-system,sans-serif;}
+  :root{--green:#1F8B3F;--green-d:#0F5A28;--amber:#E0A23C;--ink:#0A1F12;--muted:#6B7B70;}
+  body{background:#EDEBE4;padding:40px;display:flex;flex-direction:column;gap:34px;align-items:center;}
+  .row{display:flex;gap:34px;align-items:stretch;flex-wrap:wrap;justify-content:center;}
+  .card{background:#fff;border-radius:20px;box-shadow:0 8px 30px rgba(0,0,0,.10);padding:0;overflow:hidden;width:520px;}
+  .hd{font:700 13px Inter;color:#222;padding:14px 20px;border-bottom:1px solid #eee;background:#FAFAF8;}
+  .hd small{font-weight:400;color:#777;}
+  .stage{padding:46px 30px;display:flex;align-items:center;justify-content:center;gap:34px;min-height:170px;}
+  .stage.dark{background:linear-gradient(160deg,#0F5A28,#1F8B3F 60%,#23A14B);}
+  .icotile{width:96px;height:96px;border-radius:24px;background:linear-gradient(150deg,#0F5A28,#1F8B3F 60%,#23A14B);display:flex;align-items:center;justify-content:center;flex:none;box-shadow:0 8px 22px rgba(15,90,40,.35);position:relative;overflow:hidden;}
+  .icotile::after{content:"⚽";position:absolute;right:-18px;bottom:-14px;font-size:90px;opacity:.10;}
+  .icotile svg{width:52px;height:52px;position:relative;}
+
+  /* ===== C1 — Wordmark two-tone (Play = amber) + ball-dot ===== */
+  .c1 .wm{font-size:44px;font-weight:800;letter-spacing:-1.5px;line-height:1;}
+  .c1 .wm .f{color:var(--green-d);}.c1 .wm .p{color:var(--amber);}
+  .c1 .mg{font-size:30px;font-weight:300;letter-spacing:8px;text-transform:uppercase;color:var(--muted);margin-top:7px;}
+  .c1.dark .wm .f{color:#fff;}.c1.dark .mg{color:rgba(255,255,255,.8);}
+  .lk{display:flex;flex-direction:column;}
+
+  /* ===== C2 — Mark + horizontal wordmark ===== */
+  .c2 .wm{font-size:38px;font-weight:800;letter-spacing:-1px;line-height:1;color:var(--green-d);}
+  .c2 .wm .p{color:var(--amber);}
+  .c2 .mg{font-size:21px;font-weight:300;letter-spacing:7px;text-transform:uppercase;color:var(--muted);margin-top:5px;}
+  .c2.dark .wm{color:#fff;}.c2.dark .mg{color:rgba(255,255,255,.78);}
+
+  /* ===== C3 — Stacked mark + wordmark ===== */
+  .c3 .lk{align-items:center;text-align:center;}
+  .c3 .wm{font-size:36px;font-weight:800;letter-spacing:-1px;line-height:1;color:var(--green-d);margin-top:14px;}
+  .c3 .wm .p{color:var(--amber);}
+  .c3 .mg{font-size:18px;font-weight:400;letter-spacing:9px;text-transform:uppercase;color:var(--muted);margin-top:6px;margin-right:-9px;}
+  .c3.dark .wm{color:#fff;}.c3.dark .mg{color:rgba(255,255,255,.78);}
+  .markbig{width:64px;height:64px;}
+</style></head>
+<body>
+
+<!-- C1 -->
+<div class="card">
+  <div class="hd">C1 — Wordmark two-tone <small>„Fair"+„Play"(amber)+ MANAGER · čisté, typografické, bez marku · app-ikona = monogram FP</small></div>
+  <div class="stage c1"><div class="lk"><div class="wm"><span class="f">Fair</span><span class="p">Play</span></div><div class="mg">Manager</div></div></div>
+  <div class="stage dark c1"><div class="lk"><div class="wm"><span class="f">Fair</span><span class="p">Play</span></div><div class="mg">Manager</div></div>
+    <div class="icotile"><svg viewBox="0 0 24 24"><text x="12" y="16.5" text-anchor="middle" font-size="13" font-weight="800" fill="#fff" font-family="Inter">FP</text></svg></div></div>
+</div>
+
+<!-- C2 -->
+<div class="card">
+  <div class="hd">C2 — Mark + horizontal <small>flat lopta-mark vľavo + „FairPlay Manager" vpravo · mark = aj app-ikona</small></div>
+  <div class="stage c2">
+    <div class="icotile" style="background:#fff;box-shadow:0 6px 18px rgba(15,90,40,.18)"><svg viewBox="0 0 24 24" fill="none" stroke="#1F8B3F" stroke-width="1.6"><circle cx="12" cy="12" r="9.3"/><path d="M12 6.6l4.4 3.2-1.7 5.2H9.3L7.6 9.8z" fill="rgba(31,139,63,.14)" stroke-width="1.3"/><path d="M12 3.2v3.4M16.4 9.8l3.2-1M14.7 15l2 2.7M9.3 15l-2 2.7M7.6 9.8l-3.2-1" stroke-width="1.2"/></svg></div>
+    <div class="lk"><div class="wm">Fair<span class="p">Play</span></div><div class="mg">Manager</div></div>
+  </div>
+  <div class="stage dark c2">
+    <div class="icotile"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><circle cx="12" cy="12" r="9.3"/><path d="M12 6.6l4.4 3.2-1.7 5.2H9.3L7.6 9.8z" fill="rgba(255,255,255,.16)" stroke-width="1.3"/><path d="M12 3.2v3.4M16.4 9.8l3.2-1M14.7 15l2 2.7M9.3 15l-2 2.7M7.6 9.8l-3.2-1" stroke-width="1.2"/></svg></div>
+    <div class="lk"><div class="wm">Fair<span class="p">Play</span></div><div class="mg">Manager</div></div>
+  </div>
+</div>
+
+<!-- C3 -->
+<div class="card">
+  <div class="hd">C3 — Stacked mark + wordmark <small>lopta-balance mark hore + centrovaný wordmark · prémiové</small></div>
+  <div class="stage c3"><div class="lk">
+    <svg class="markbig" viewBox="0 0 24 24" fill="none" stroke="#1F8B3F" stroke-width="1.5"><circle cx="12" cy="12" r="9.3"/><path d="M3.2 13.5h17.6" stroke="#E0A23C" stroke-width="1.4"/><circle cx="12" cy="12" r="2.3" fill="#E0A23C" stroke="none"/></svg>
+    <div class="wm">Fair<span class="p">Play</span></div><div class="mg">Manager</div></div></div>
+  <div class="stage dark c3"><div class="lk">
+    <svg class="markbig" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5"><circle cx="12" cy="12" r="9.3"/><path d="M3.2 13.5h17.6" stroke="#FAD77F" stroke-width="1.4"/><circle cx="12" cy="12" r="2.3" fill="#FAD77F" stroke="none"/></svg>
+    <div class="wm" style="color:#fff">Fair<span class="p" style="color:#FAD77F">Play</span></div><div class="mg" style="color:rgba(255,255,255,.8)">Manager</div></div></div>
+</div>
+
+</body></html>
