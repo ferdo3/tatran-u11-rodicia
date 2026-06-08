@@ -1,0 +1,41 @@
+<!DOCTYPE html><html lang="sk"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;font-family:Sora,sans-serif}
+  body{background:#15170f;color:#e9ece8;padding:24px 14px 50px}
+  h1{font-size:18px;font-weight:800;margin-bottom:6px}
+  .sub{font-size:12px;color:#8a9088;margin-bottom:20px;line-height:1.5}
+  table{border-collapse:collapse;width:100%;max-width:560px}
+  td,th{padding:12px 8px;text-align:center;border:1px solid #2a3120}
+  th{font-size:12px;color:#F7B53B;letter-spacing:.02em}
+  .rh{font-size:11px;color:#9aa097;text-align:left;font-weight:600;white-space:nowrap}
+  .real{background:#fff;border-radius:5px;display:inline-block;padding:6px;vertical-align:middle}
+  .zoom{image-rendering:pixelated;background:#fff;border-radius:5px;border:1px solid #ccc}
+</style></head><body>
+<h1>Favicon — zjednodušené glyfy (čo funguje @16px)</h1>
+<div class="sub">Pri 16&nbsp;px prstenec nejde → samostatný glyf. „F" = monogram (Sora), „▶" = play trojuholník (z marky / „Play"). Pozadie plochá zelená.</div>
+<table>
+  <tr><th></th><th>F<br><small>biele</small></th><th>F<br><small>oranž.</small></th><th>▶<br><small>oranž.</small></th><th>▶<br><small>biele</small></th></tr>
+  <tr><td class="rh">16 px<br>real</td>
+    <td><img class="real" src="f-white-16.png" width="16"></td>
+    <td><img class="real" src="f-orange-16.png" width="16"></td>
+    <td><img class="real" src="tri-orange-16.png" width="16"></td>
+    <td><img class="real" src="tri-white-16.png" width="16"></td></tr>
+  <tr><td class="rh">16 px<br>6× zoom</td>
+    <td><img class="zoom" src="f-white-16.png" width="84"></td>
+    <td><img class="zoom" src="f-orange-16.png" width="84"></td>
+    <td><img class="zoom" src="tri-orange-16.png" width="84"></td>
+    <td><img class="zoom" src="tri-white-16.png" width="84"></td></tr>
+  <tr><td class="rh">32 px<br>real</td>
+    <td><img class="real" src="f-white-32.png" width="32"></td>
+    <td><img class="real" src="f-orange-32.png" width="32"></td>
+    <td><img class="real" src="tri-orange-32.png" width="32"></td>
+    <td><img class="real" src="tri-white-32.png" width="32"></td></tr>
+  <tr><td class="rh">32 px<br>4× zoom</td>
+    <td><img class="zoom" src="f-white-32.png" width="96"></td>
+    <td><img class="zoom" src="f-orange-32.png" width="96"></td>
+    <td><img class="zoom" src="tri-orange-32.png" width="96"></td>
+    <td><img class="zoom" src="tri-white-32.png" width="96"></td></tr>
+</table>
+</body></html>
