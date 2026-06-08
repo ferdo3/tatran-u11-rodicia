@@ -1,0 +1,78 @@
+<!DOCTYPE html><html lang="sk"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>FairPlay Manager — icon preview</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;font-family:Sora,-apple-system,system-ui,sans-serif}
+  body{background:#10130f;color:#e9ece8;padding:22px 16px 60px;-webkit-text-size-adjust:100%}
+  h1{font-size:19px;font-weight:800;letter-spacing:-.02em;margin-bottom:4px}
+  .sub{font-size:12.5px;color:#8a9088;margin-bottom:22px;line-height:1.5}
+  h2{font-size:14px;font-weight:800;margin:26px 0 12px;padding-top:18px;border-top:1px solid #23291f;color:#cfe6d4}
+  .note{font-size:11.5px;color:#8a9088;margin:-6px 0 12px;line-height:1.45}
+  .row{display:flex;flex-wrap:wrap;gap:18px;align-items:flex-end}
+  .it{display:flex;flex-direction:column;align-items:center;gap:7px}
+  .it img{display:block;image-rendering:auto}
+  .cap{font-size:10.5px;color:#9aa097;text-align:center;line-height:1.35}
+  .cap b{color:#e9ece8;font-weight:600}
+  .tile-dark{background:#0c1a10;border-radius:12px;padding:14px}
+  .tile-light{background:#f1efe8;border-radius:12px;padding:14px}
+  .squircle{border-radius:22.37%;overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,.4)}
+  .circle{border-radius:50%;overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,.4)}
+  .ring-safe{position:relative}
+  .ring-safe::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px dashed rgba(255,255,255,.45);pointer-events:none}
+  .fav{display:flex;flex-direction:column;align-items:center;gap:6px}
+  .fav .strip{display:flex;gap:14px;align-items:flex-end;background:#fff;padding:14px 16px;border-radius:10px}
+  .fav .s{display:flex;flex-direction:column;align-items:center;gap:4px}
+  .fav .s span{font-size:9.5px;color:#555}
+  .col2{display:flex;gap:26px;flex-wrap:wrap}
+  .label{font-size:12px;font-weight:800;color:#F7B53B;margin-bottom:8px;text-transform:uppercase;letter-spacing:.04em}
+</style></head><body>
+<h1>FairPlay Manager — ikony (preview)</h1>
+<div class="sub">Biely Fair-ring + oranžový accent na brand gradiente. Maskable = full-bleed (Android maska neodhalí okraje). Skontroluj najmä favicon (plný vs mini) pri 16/32&nbsp;px.</div>
+
+<h2>1 · Display (iOS / homescreen)</h2>
+<div class="note">iOS si zaobľuje sám → master je plochý štvorec. Vľavo plochý 1024, vpravo náhľad so zaoblením (squircle).</div>
+<div class="row">
+  <div class="it"><img src="icon-1024.png" width="120" height="120"><div class="cap"><b>1024 master</b><br>plochý, bez alpha</div></div>
+  <div class="it"><img class="squircle" src="icon-1024.png" width="120" height="120"><div class="cap"><b>náhľad iOS</b><br>(zaoblený)</div></div>
+  <div class="it"><img class="squircle" src="apple-touch-icon-180.png" width="76" height="76"><div class="cap"><b>apple-touch</b><br>180</div></div>
+  <div class="it"><img class="squircle" src="icon-192.png" width="60" height="60"><div class="cap">PWA 192</div></div>
+</div>
+
+<h2>2 · Maskable (Android)</h2>
+<div class="note">Štvorec = čo sa renderuje. Kruh (s prerušovanou safe-zónou) = čo odhalí Android kruhová maska — mark musí byť vnútri.</div>
+<div class="row">
+  <div class="it"><img src="maskable-512.png" width="120" height="120" style="border-radius:10px"><div class="cap"><b>512 raw</b><br>full-bleed</div></div>
+  <div class="it"><div class="circle ring-safe"><img src="maskable-512.png" width="120" height="120"></div><div class="cap"><b>kruhová maska</b><br>mark vnútri ✓</div></div>
+  <div class="it"><div class="squircle"><img src="maskable-512.png" width="120" height="120"></div><div class="cap"><b>squircle maska</b></div></div>
+  <div class="it"><div class="circle"><img src="maskable-192.png" width="64" height="64"></div><div class="cap">192 v kruhu</div></div>
+</div>
+
+<h2>3 · Mono / monochrome</h2>
+<div class="note">Biela silueta (priehľadné pozadie) — pre Android themed ikony + budúcu natívnu appku. iOS-PWA z plochy ju nepoužíva.</div>
+<div class="row">
+  <div class="it"><div class="tile-dark"><img src="mono-512.png" width="96" height="96"></div><div class="cap">na tmavom</div></div>
+  <div class="it"><div class="tile-light"><img src="mono-512.png" width="96" height="96" style="filter:invert(1)"></div><div class="cap">na svetlom<br>(invert náhľad)</div></div>
+</div>
+
+<h2>4 · Favicon — PLNÝ vs MINI</h2>
+<div class="note">Skutočná veľkosť (1:1 px). Tenký prstenec pri 16&nbsp;px môže splynúť → mini má hrubší prstenec + väčší trojuholník. Vyber čo je čitateľnejšie.</div>
+<div class="col2">
+  <div class="fav">
+    <div class="label">Plný</div>
+    <div class="strip">
+      <div class="s"><img src="favicon-full-48.png" width="48" height="48"><span>48</span></div>
+      <div class="s"><img src="favicon-full-32.png" width="32" height="32"><span>32</span></div>
+      <div class="s"><img src="favicon-full-16.png" width="16" height="16"><span>16</span></div>
+    </div>
+  </div>
+  <div class="fav">
+    <div class="label">Mini (hrubší)</div>
+    <div class="strip">
+      <div class="s"><img src="favicon-mini-48.png" width="48" height="48"><span>48</span></div>
+      <div class="s"><img src="favicon-mini-32.png" width="32" height="32"><span>32</span></div>
+      <div class="s"><img src="favicon-mini-16.png" width="16" height="16"><span>16</span></div>
+    </div>
+  </div>
+</div>
+</body></html>

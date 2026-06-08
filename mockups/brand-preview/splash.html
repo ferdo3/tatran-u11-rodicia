@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>FairPlay Manager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; height: 100%; }
+  body {
+    font-family: 'Sora', -apple-system, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh; min-height: 100svh;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+    color: #fff;
+    /* Full-bleed diagonal two-corner depth gradient (edge-to-edge, behind notch/home) */
+    background:
+      radial-gradient(110% 75% at 16% 3%, rgba(0,0,0,0.24), rgba(0,0,0,0) 44%),
+      radial-gradient(110% 75% at 84% 99%, rgba(0,0,0,0.22), rgba(0,0,0,0) 44%),
+      radial-gradient(120% 90% at 50% 48%, rgba(255,255,255,0.06), rgba(255,255,255,0) 55%),
+      linear-gradient(168deg, #134E27 0%, #1A7236 30%, #1F8B3F 58%, #2B9C49 100%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+  .logo { display: flex; flex-direction: column; align-items: center; justify-content: center; transform: translateY(-3vh); }
+  #mark { display: block; width: 86px; height: 86px; }
+  .wmv { display: flex; flex-direction: column; align-items: center; line-height: 1; margin-top: 22px; }
+  .wmv-row { display: flex; font-weight: 800; letter-spacing: -0.025em; font-size: 39px; }
+  .wmv .fair { color: #FFFFFF; }
+  .wmv .play { color: #F7B53B; }
+  .wmv-sub { font-weight: 600; letter-spacing: 0.40em; color: rgba(255,255,255,0.66); font-size: 11.5px; padding-left: 0.40em; margin-top: 9px; }
+  .tagline { color: rgba(255,255,255,0.78); font-weight: 400; font-size: 13px; margin-top: 19px; }
+</style>
+</head>
+<body>
+  <div class="logo">
+    <svg id="mark" viewBox="0 0 100 100" role="img" aria-label="FairPlay Manager"></svg>
+    <div class="wmv">
+      <div class="wmv-row"><span class="fair">Fair</span><span class="play">Play</span></div>
+      <div class="wmv-sub">MANAGER</div>
+    </div>
+    <div class="tagline">Férové minúty pre každého</div>
+  </div>
+<script>
+  // Fair-ring mark — ported from marks3.jsx (segPath geometry). Vanilla, no React/Babel.
+  function polarM(cx, cy, r, deg) { var a = (deg - 90) * Math.PI / 180; return [cx + r * Math.cos(a), cy + r * Math.sin(a)]; }
+  function segPath(cx, cy, ro, ri, a0, a1) {
+    var A = polarM(cx, cy, ro, a0), B = polarM(cx, cy, ro, a1), C = polarM(cx, cy, ri, a1), D = polarM(cx, cy, ri, a0);
+    var large = (a1 - a0) <= 180 ? 0 : 1;
+    return 'M' + A[0].toFixed(2) + ' ' + A[1].toFixed(2) + ' A' + ro + ' ' + ro + ' 0 ' + large + ' 1 ' + B[0].toFixed(2) + ' ' + B[1].toFixed(2) +
+      ' L' + C[0].toFixed(2) + ' ' + C[1].toFixed(2) + ' A' + ri + ' ' + ri + ' 0 ' + large + ' 0 ' + D[0].toFixed(2) + ' ' + D[1].toFixed(2) + ' Z';
+  }
+  var SVGNS = 'http://www.w3.org/2000/svg';
+  var c = 50, ro = 42, gap = 7, step = 60, ri = 31, REST = 5;
+  var RING = '#FFFFFF', ACCENT = '#F59E0B', TRI = '#F59E0B';
+  var mk = document.getElementById('mark'), segs = [];
+  for (var i = 0; i < 6; i++) {
+    var a0 = i * step - step / 2 + gap / 2, a1 = i * step + step / 2 - gap / 2;
+    var p = document.createElementNS(SVGNS, 'path');
+    p.setAttribute('d', segPath(c, c, ro, ri, a0, a1));
+    segs.push(p); mk.appendChild(p);
+  }
+  var tri = document.createElementNS(SVGNS, 'polygon');
+  tri.setAttribute('points', '64,50 42.5,37.5 42.5,62.5');
+  tri.setAttribute('fill', TRI); tri.setAttribute('stroke', TRI);
+  tri.setAttribute('stroke-width', '5.5'); tri.setAttribute('stroke-linejoin', 'round'); tri.setAttribute('stroke-linecap', 'round');
+  mk.appendChild(tri);
+  function paint(idx) { for (var i = 0; i < 6; i++) segs[i].setAttribute('fill', i === idx ? ACCENT : RING); }
+  paint(REST);
+  // Loader: orange segment hops clockwise; triangle static; rest = upper-left (idx 5). Reduced-motion = static.
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduced) { var k = REST; setInterval(function () { k = (k + 1) % 6; paint(k); }, 165); }
+</script>
+</body>
+</html>
