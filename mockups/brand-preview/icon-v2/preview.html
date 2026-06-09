@@ -1,0 +1,50 @@
+<!DOCTYPE html><html lang="sk"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&display=swap" rel="stylesheet">
+<title>FairPlay ikona v2</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;font-family:Sora,-apple-system,sans-serif}
+  body{background:#10130f;color:#e9ece8;padding:24px 16px 60px}
+  h1{font-size:19px;font-weight:800;margin-bottom:4px}
+  .sub{font-size:12.5px;color:#8a9088;margin-bottom:22px;line-height:1.5}
+  h2{font-size:14px;font-weight:800;margin:26px 0 12px;padding-top:18px;border-top:1px solid #23291f;color:#cfe6d4}
+  .note{font-size:11.5px;color:#8a9088;margin:-6px 0 14px;line-height:1.45}
+  .row{display:flex;flex-wrap:wrap;gap:20px;align-items:flex-end}
+  .it{display:flex;flex-direction:column;align-items:center;gap:8px}
+  .cap{font-size:10.5px;color:#9aa097;text-align:center;line-height:1.35}
+  .cap b{color:#e9ece8;font-weight:600}
+  .squircle{border-radius:22.37%;overflow:hidden;box-shadow:0 8px 22px rgba(0,0,0,.45)}
+  .circle{border-radius:50%;overflow:hidden;box-shadow:0 8px 22px rgba(0,0,0,.45)}
+  .ring-safe{position:relative}
+  .ring-safe::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px dashed rgba(255,255,255,.45);pointer-events:none}
+  .tile-dark{background:#0c1a10;border-radius:12px;padding:14px}
+  img{display:block;image-rendering:auto}
+</style></head><body>
+<h1>FairPlay app-ikona — v2 (doladená)</h1>
+<div class="sub">Väčšia marka · hrubší prstenec · hĺbkový gradient (ako splash) · vycentrovaný trojuholník. Mini favicon (▶) ostáva nezmenený.</div>
+
+<h2>Predtým vs teraz (homescreen náhľad)</h2>
+<div class="row">
+  <div class="it"><img class="squircle" src="display-old.png" width="128" height="128"><div class="cap"><b>STARÁ</b><br>malá marka, plochý</div></div>
+  <div class="it"><img class="squircle" src="display.png" width="128" height="128"><div class="cap"><b>NOVÁ v2</b><br>väčšia, hĺbka, hrubšia</div></div>
+</div>
+
+<h2>Nová — varianty</h2>
+<div class="row">
+  <div class="it"><img class="squircle" src="display.png" width="120" height="120"><div class="cap"><b>homescreen</b><br>(zaoblený)</div></div>
+  <div class="it"><img src="display.png" width="120" height="120" style="border-radius:10px"><div class="cap"><b>raw štvorec</b><br>iOS master</div></div>
+  <div class="it"><img class="squircle" src="display.png" width="64" height="64"><div class="cap">malá<br>(64px)</div></div>
+</div>
+
+<h2>Maskable (Android) — väčšia marka, stále v safe-zóne?</h2>
+<div class="note">Kruh + prerušovaná = Android maska. Marka musí ostať vnútri.</div>
+<div class="row">
+  <div class="it"><div class="circle ring-safe"><img src="maskable.png" width="120" height="120"></div><div class="cap"><b>kruhová maska</b></div></div>
+  <div class="it"><div class="squircle"><img src="maskable.png" width="120" height="120"></div><div class="cap">squircle maska</div></div>
+</div>
+
+<h2>Mono (Android themed / budúce)</h2>
+<div class="row">
+  <div class="it"><div class="tile-dark"><img src="mono.png" width="96" height="96"></div><div class="cap">na tmavom</div></div>
+</div>
+</body></html>
