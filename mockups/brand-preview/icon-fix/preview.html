@@ -1,0 +1,35 @@
+<!DOCTYPE html><html lang="sk"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&display=swap" rel="stylesheet">
+<title>Ikona — oprava fill+centrovanie</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;font-family:Sora,-apple-system,sans-serif}
+  body{background:#10130f;color:#e9ece8;padding:24px 16px 60px}
+  h1{font-size:19px;font-weight:800;margin-bottom:4px}
+  .sub{font-size:12.5px;color:#8a9088;margin-bottom:22px;line-height:1.5}
+  h2{font-size:14px;font-weight:800;margin:24px 0 12px;padding-top:16px;border-top:1px solid #23291f;color:#cfe6d4}
+  .row{display:flex;flex-wrap:wrap;gap:22px;align-items:flex-end}
+  .it{display:flex;flex-direction:column;align-items:center;gap:9px}
+  .cap{font-size:11px;color:#9aa097;text-align:center;line-height:1.4}
+  .cap b{color:#fff;font-weight:700}
+  .squircle{border-radius:22.37%;overflow:hidden;box-shadow:0 8px 22px rgba(0,0,0,.45)}
+  .onmag{background:#FF00FF;padding:0;border-radius:4px}
+  img{display:block}
+  .tag{display:inline-block;font-size:10px;border-radius:5px;padding:2px 7px;margin-top:2px}
+  .bad{background:#4d1d1d;color:#e6b8b8}.good{background:#1d4d2b;color:#cfe6d4}
+</style></head><body>
+<h1>App-ikona — oprava (fill + vycentrovanie)</h1>
+<div class="sub">Pôvodný dizajn loga nezmenený. Zelený gradient teraz vypĺňa CELÝ štvorec po okraje (žiadny biely pruh) + logo vycentrované + zväčšené na ~78%.</div>
+
+<h2>Stará (chybná) vs Opravená — homescreen náhľad</h2>
+<div class="row">
+  <div class="it"><img class="squircle" src="old.png" width="136" height="136"><div class="cap"><b>STARÁ</b><br>biely pruh dole,<br>logo vysoko/malé<br><span class="tag bad">teraz live</span></div></div>
+  <div class="it"><img class="squircle" src="fixed.png" width="136" height="136"><div class="cap"><b>OPRAVENÁ</b><br>zelená po okraje,<br>vycentrované, 78%<br><span class="tag good">návrh</span></div></div>
+</div>
+
+<h2>Dôkaz „zelená po okraje" (na magente — nič nepresvitá)</h2>
+<div class="row">
+  <div class="it"><div class="onmag"><img src="fixed.png" width="150" height="150"></div><div class="cap">opravená — zelená<br>siaha do všetkých rohov</div></div>
+  <div class="it"><div class="onmag"><img src="old.png" width="150" height="150"></div><div class="cap">stará — biely pruh dole</div></div>
+</div>
+</body></html>
