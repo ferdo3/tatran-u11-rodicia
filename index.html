@@ -4,19 +4,23 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Rodičia U11</title>
-<link rel="apple-touch-icon" href="apple-touch-icon.png?v=3">
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=3">
-<link rel="apple-touch-icon-precomposed" href="apple-touch-icon.png?v=3">
-<link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=4">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=4">
+<link rel="apple-touch-icon-precomposed" href="apple-touch-icon.png?v=4">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=4">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png?v=4">
 <meta name="apple-mobile-web-app-title" content="Rodičia U11">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="theme-color" content="#1F8B3F">
 <link rel="manifest" href="manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
   *{box-sizing:border-box}
   html,body{margin:0;height:100%;min-height:100%}
-  body{background:linear-gradient(160deg,#0F5A28,#1F8B3F 55%,#23A14B);
+  body{background:linear-gradient(150deg,#134E27,#1A7236 32%,#1F8B3F 66%,#2B9C49);
     color:#fff;font-family:-apple-system,'Helvetica Neue',Helvetica,Arial,sans-serif;
     display:flex;flex-direction:column;align-items:center;justify-content:center;
     text-align:center;padding:32px 22px;min-height:100vh}
@@ -35,13 +39,20 @@
     padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)}
   #appframe{display:block;width:100%;height:100%;border:0}
   #splash{position:absolute;inset:0;z-index:1;display:flex;flex-direction:column;
-    align-items:center;justify-content:center;gap:16px;background:#1F8B3F;color:#fff;
-    transition:opacity .3s;pointer-events:none}
+    align-items:center;justify-content:center;color:#fff;font-family:'Sora',-apple-system,sans-serif;
+    transition:opacity .3s;pointer-events:none;
+    background:
+      radial-gradient(110% 75% at 16% 3%, rgba(0,0,0,.24), rgba(0,0,0,0) 44%),
+      radial-gradient(110% 75% at 84% 99%, rgba(0,0,0,.22), rgba(0,0,0,0) 44%),
+      radial-gradient(120% 90% at 50% 48%, rgba(255,255,255,.06), rgba(255,255,255,0) 55%),
+      linear-gradient(168deg,#134E27 0%,#1A7236 30%,#1F8B3F 58%,#2B9C49 100%)}
   #splash.hide{opacity:0}
-  #splash img{width:92px;height:92px;border-radius:22px;box-shadow:0 8px 24px rgba(0,0,0,.3)}
-  .spin{width:34px;height:34px;border:4px solid rgba(255,255,255,.35);border-top-color:#fff;
-    border-radius:50%;animation:sp .8s linear infinite}
-  @keyframes sp{to{transform:rotate(360deg)}}
+  #splash #spmark{width:84px;height:84px;display:block;transform:translateY(-2vh)}
+  #splash .wmv{display:flex;flex-direction:column;align-items:center;line-height:1;margin-top:20px}
+  #splash .wmv-row{display:flex;font-weight:800;letter-spacing:-.025em;font-size:36px}
+  #splash .wmv .fair{color:#fff}#splash .wmv .play{color:#F7B53B}
+  #splash .wmv-sub{font-weight:600;letter-spacing:.4em;color:rgba(255,255,255,.66);font-size:11px;padding-left:.4em;margin-top:8px}
+  #splash .tagline{color:rgba(255,255,255,.78);font-weight:400;font-size:12.5px;margin-top:17px}
   html.embed,body.embed{overflow:hidden}
 </style>
 <script>
@@ -61,7 +72,7 @@
       var splash = document.getElementById("splash");
       if (!wrap || !frame) return;
       wrap.style.display = "block";
-      frame.addEventListener("load", function(){ if (splash) splash.className = "hide"; });
+      frame.addEventListener("load", function(){ if (splash) splash.className = "hide"; if (window.__spi) clearInterval(window.__spi); });
       frame.src = REPORT;
     });
   })();
@@ -70,15 +81,37 @@
 <body>
   <!-- Standalone: fullscreen iframe shell (skrytý kým JS nezistí standalone) -->
   <div id="appwrap">
-    <div id="splash"><img src="apple-touch-icon.png?v=3" alt=""><div class="spin"></div></div>
+    <div id="splash">
+      <svg id="spmark" viewBox="0 0 100 100" aria-hidden="true"></svg>
+      <div class="wmv"><div class="wmv-row"><span class="fair">Fair</span><span class="play">Play</span></div><div class="wmv-sub">MANAGER</div></div>
+      <div class="tagline">Férové minúty pre každého</div>
+    </div>
     <iframe id="appframe" title="U11 — Rodičia" allow="clipboard-write"></iframe>
   </div>
 
   <!-- Bežné Safari: landing page (pridať na plochu) -->
-  <img class="ic" src="apple-touch-icon.png?v=3" alt="U11 Rodičia">
+  <img class="ic" src="apple-touch-icon.png?v=4" alt="U11 Rodičia">
   <h1>U11 — Rodičia</h1>
   <p class="sub">Prehľad účasti pre rodičov · FC Tatran Prešov</p>
   <a class="btn" href="https://script.google.com/macros/s/AKfycbwtY15tDDfX4dz4hZm6WrcuabCfweVtyr3RiCv65wQD1e9Cy99SkR86EOz3U1t5ogm3/exec?view=parent">Otvoriť prehľad →</a>
   <div class="hint">📲 Pridaj na plochu: ťukni <b>Zdieľať</b> → <b>Pridať na plochu</b>.</div>
+
+  <script>
+    /* Splash loader = Fair-ring marka (port z marks3.jsx). Oranžový segment obieha,
+       trojuholník statický, pokoj vľavo hore (idx 5). Reduced-motion = statická. */
+    (function(){
+      var mk=document.getElementById('spmark'); if(!mk) return;
+      function pol(cx,cy,r,d){var a=(d-90)*Math.PI/180;return [cx+r*Math.cos(a),cy+r*Math.sin(a)];}
+      function seg(cx,cy,ro,ri,a0,a1){var A=pol(cx,cy,ro,a0),B=pol(cx,cy,ro,a1),C=pol(cx,cy,ri,a1),D=pol(cx,cy,ri,a0),L=(a1-a0)<=180?0:1;
+        return 'M'+A[0].toFixed(2)+' '+A[1].toFixed(2)+' A'+ro+' '+ro+' 0 '+L+' 1 '+B[0].toFixed(2)+' '+B[1].toFixed(2)+' L'+C[0].toFixed(2)+' '+C[1].toFixed(2)+' A'+ri+' '+ri+' 0 '+L+' 0 '+D[0].toFixed(2)+' '+D[1].toFixed(2)+' Z';}
+      var NS='http://www.w3.org/2000/svg',c=50,ro=42,gap=7,st=60,ri=31,REST=5,RING='#FFFFFF',ACC='#F59E0B',S=[];
+      for(var i=0;i<6;i++){var a0=i*st-st/2+gap/2,a1=i*st+st/2-gap/2,p=document.createElementNS(NS,'path');p.setAttribute('d',seg(c,c,ro,ri,a0,a1));S.push(p);mk.appendChild(p);}
+      var tr=document.createElementNS(NS,'polygon');tr.setAttribute('points','64,50 42.5,37.5 42.5,62.5');tr.setAttribute('fill',ACC);tr.setAttribute('stroke',ACC);tr.setAttribute('stroke-width','5.5');tr.setAttribute('stroke-linejoin','round');tr.setAttribute('stroke-linecap','round');mk.appendChild(tr);
+      function paint(k){for(var i=0;i<6;i++)S[i].setAttribute('fill',i===k?ACC:RING);}
+      paint(REST);
+      var red=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if(!red){var k=REST;window.__spi=setInterval(function(){k=(k+1)%6;paint(k);},165);}
+    })();
+  </script>
 </body>
 </html>
