@@ -53,6 +53,8 @@
   #appwrap{position:fixed;inset:0;z-index:1000;display:none;background:#1F8B3F;overflow:hidden;
     padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom);
     padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)}
+  /* spodná safe-area (home-indicator) = ZELENÁ — prekryje biely presak škálovaného iframe */
+  #appwrap::after{content:"";position:absolute;left:0;right:0;bottom:0;height:env(safe-area-inset-bottom,0px);background:#1F8B3F;z-index:2;pointer-events:none}
   /* width/height/transform nastavuje JS (fit) — iframe renderuje na DW=980 a škáluje sa na
      šírku displeja → replikuje GAS-in-Safari prostredie (rovnaká veľkosť ako priamy Safari). */
   #appframe{display:block;border:0;background:#fff}
@@ -93,7 +95,7 @@
       // [PWA-size fix] iframe renderuje na DW=980 (= GAS-Safari šírka, pre ktorú sa parent
       // --fit kalibruje) a CSS transformom ho zmenšíme na šírku displeja → PWA má rovnakú
       // (menšiu) veľkosť ako priamy Safari, nie zväčšenú device-width verziu.
-      var DW = 980;
+      var DW = 750;  // 980→750 ≈ +30% väčší report v PWA (menšie DW = väčší obsah); tune ±
       function fit(){
         var cs = getComputedStyle(wrap);
         var padL = parseFloat(cs.paddingLeft)||0, padR = parseFloat(cs.paddingRight)||0;
