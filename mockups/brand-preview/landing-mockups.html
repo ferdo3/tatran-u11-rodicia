@@ -1,0 +1,116 @@
+<!DOCTYPE html><html lang="sk"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+<title>Landing mockupy</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;font-family:Sora,-apple-system,sans-serif}
+  body{background:#0e110d;color:#e9ece8;padding:22px 14px 60px}
+  h1{font-size:18px;font-weight:800;margin-bottom:6px}
+  .intro{font-size:12.5px;color:#8a9088;margin-bottom:24px;line-height:1.5}
+  .lab{font-size:14px;font-weight:800;color:#cfe6d4;margin:30px 0 4px}
+  .desc{font-size:12px;color:#8a9088;margin-bottom:12px;line-height:1.45}
+  .desc b{color:#F7B53B;font-weight:700}
+  /* phone */
+  .phone{width:330px;max-width:92vw;aspect-ratio:9/19;border-radius:34px;overflow:hidden;
+    box-shadow:0 14px 40px rgba(0,0,0,.5);position:relative;
+    background:linear-gradient(150deg,#134E27,#1A7236 32%,#1F8B3F 66%,#2B9C49);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:30px 26px;color:#fff}
+  .ic{width:92px;height:92px;border-radius:21px;box-shadow:0 8px 22px rgba(0,0,0,.32);margin-bottom:16px}
+  .pn h2{font-size:24px;font-weight:800;letter-spacing:-.01em}
+  .pn .sub{font-size:13px;opacity:.9;margin-top:4px;line-height:1.35}
+  .btn{display:inline-block;background:#fff;color:#0F5A28;font-weight:700;font-size:16px;
+    padding:13px 26px;border-radius:13px;box-shadow:0 4px 14px rgba(0,0,0,.25);margin-top:22px;text-decoration:none}
+  .btn.sec{background:transparent;color:#fff;box-shadow:none;text-decoration:underline;font-weight:600;font-size:14px;padding:8px;opacity:.9}
+  /* install card */
+  .inst{margin-top:20px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);
+    border-radius:16px;padding:15px 16px;width:100%;backdrop-filter:blur(4px)}
+  .inst .t{font-size:12.5px;font-weight:700;margin-bottom:11px;display:flex;align-items:center;gap:7px;justify-content:center}
+  .steps{display:flex;align-items:center;gap:9px;justify-content:center}
+  .step{display:flex;flex-direction:column;align-items:center;gap:5px;flex:1}
+  .step .ci{width:34px;height:34px;border-radius:10px;background:rgba(255,255,255,.16);display:flex;align-items:center;justify-content:center}
+  .step .lbl{font-size:10.5px;line-height:1.25;opacity:.92}
+  .arr{opacity:.6;font-size:16px}
+  .foot{font-size:10.5px;opacity:.75;margin-top:11px;line-height:1.35}
+  svg{display:block}
+  .icn{width:19px;height:19px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .big2{display:flex;gap:12px;width:100%;margin-top:20px}
+  .opt{flex:1;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);border-radius:15px;padding:15px 10px;display:flex;flex-direction:column;align-items:center;gap:8px}
+  .opt .oi{width:30px;height:30px;border-radius:9px;background:rgba(255,255,255,.16);display:flex;align-items:center;justify-content:center}
+  .opt .ot{font-size:12.5px;font-weight:700}
+  .opt .od{font-size:10px;opacity:.82;line-height:1.3}
+</style></head><body>
+<svg width="0" height="0" style="position:absolute"><defs>
+  <linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#134E27"/><stop offset=".32" stop-color="#1A7236"/><stop offset=".64" stop-color="#1F8B3F"/><stop offset="1" stop-color="#2B9C49"/></linearGradient>
+  <symbol id="appicon" viewBox="0 0 100 100">
+    <rect width="100" height="100" fill="url(#g)"/>
+    <g transform="translate(11,11) scale(0.78)">
+      <path d="M31.26 12.41 A42 42 0 0 1 68.74 12.41 L63.83 22.26 A31 31 0 0 0 36.17 22.26 Z" fill="#fff"/>
+      <path d="M73.18 14.98 A42 42 0 0 1 91.92 47.44 L80.94 48.11 A31 31 0 0 0 67.11 24.15 Z" fill="#fff"/>
+      <path d="M91.92 52.56 A42 42 0 0 1 73.18 85.02 L67.11 75.85 A31 31 0 0 0 80.94 51.89 Z" fill="#fff"/>
+      <path d="M68.74 87.59 A42 42 0 0 1 31.26 87.59 L36.17 77.74 A31 31 0 0 0 63.83 77.74 Z" fill="#fff"/>
+      <path d="M26.82 85.02 A42 42 0 0 1 8.08 52.56 L19.06 51.89 A31 31 0 0 0 32.89 75.85 Z" fill="#fff"/>
+      <path d="M8.08 47.44 A42 42 0 0 1 26.82 14.98 L32.89 24.15 A31 31 0 0 0 19.06 48.11 Z" fill="#F59E0B"/>
+      <polygon points="64,50 42.5,37.5 42.5,62.5" fill="#F59E0B" stroke="#F59E0B" stroke-width="5.5" stroke-linejoin="round" stroke-linecap="round"/>
+    </g>
+  </symbol>
+  <symbol id="share" viewBox="0 0 24 24"><path d="M12 15V4M8.5 7.5L12 4l3.5 3.5M6 11v8a1 1 0 001 1h10a1 1 0 001-1v-8"/></symbol>
+  <symbol id="plus" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><path d="M12 8.5v7M8.5 12h7"/></symbol>
+  <symbol id="eye" viewBox="0 0 24 24"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+</defs></svg>
+
+<h1>Landing page — 3 návrhy (rodičovský launcher)</h1>
+<div class="intro">Prvý screen čo rodič uvidí po otvorení odkazu v Safari. Cieľ: nechať „Otvoriť prehľad" (okamžitá hodnota) + jasnejšie navádzať neznalého rodiča na pridanie na plochu ako appku. Flat ikony.</div>
+
+<!-- A -->
+<div class="lab">A — Tlačidlo + výrazná install karta <span style="color:#1d4d2b;background:#cfe6d4;font-size:10px;border-radius:5px;padding:2px 7px;margin-left:6px">ODPORÚČAM</span></div>
+<div class="desc">„Otvoriť prehľad" ostáva primárne. Pod ním <b>karta s 2 vizuálnymi krokmi</b> (Zdieľať → Pridať) + benefit. Neznalý rodič vidí presne čo ťukať.</div>
+<div class="phone pn">
+  <svg class="ic"><use href="#appicon"/></svg>
+  <h2>U11 — Rodičia</h2>
+  <div class="sub">Prehľad účasti · FC Tatran Prešov</div>
+  <a class="btn">Otvoriť prehľad →</a>
+  <div class="inst">
+    <div class="t">💚 Maj prehľad vždy po ruke</div>
+    <div class="steps">
+      <div class="step"><div class="ci"><svg class="icn"><use href="#share"/></svg></div><div class="lbl">1. Ťukni<br><b style="color:#F7B53B">Zdieľať</b></div></div>
+      <div class="arr">→</div>
+      <div class="step"><div class="ci"><svg class="icn"><use href="#plus"/></svg></div><div class="lbl">2. Pridať<br>na plochu</div></div>
+    </div>
+    <div class="foot">Otvorí sa ako appka — bez hľadania odkazu.</div>
+  </div>
+</div>
+
+<!-- B -->
+<div class="lab">B — Dve rovnocenné voľby</div>
+<div class="desc">Rodič si vyberie: <b>Pozrieť teraz</b> alebo <b>Pridať ako appku</b>. Rovnocenné karty, jasné rozhodnutie.</div>
+<div class="phone pn">
+  <svg class="ic"><use href="#appicon"/></svg>
+  <h2>U11 — Rodičia</h2>
+  <div class="sub">Prehľad účasti · FC Tatran Prešov</div>
+  <div class="big2">
+    <div class="opt"><div class="oi"><svg class="icn"><use href="#eye"/></svg></div><div class="ot">Pozrieť teraz</div><div class="od">otvorí prehľad</div></div>
+    <div class="opt"><div class="oi"><svg class="icn"><use href="#plus"/></svg></div><div class="ot">Pridať ako appku</div><div class="od">Zdieľať → Pridať na plochu</div></div>
+  </div>
+</div>
+
+<!-- C -->
+<div class="lab">C — Install-first (benefit)</div>
+<div class="desc">Navádza hlavne na install (appka na ploche), „Otvoriť" ostáva ako <b>menší sekundárny odkaz</b> dole. Pre rodiča čo to bude používať opakovane.</div>
+<div class="phone pn">
+  <svg class="ic"><use href="#appicon"/></svg>
+  <h2>U11 — Rodičia</h2>
+  <div class="sub" style="margin-bottom:4px">Prehľad účasti · FC Tatran Prešov</div>
+  <div class="inst" style="margin-top:18px">
+    <div class="t">📲 Pridaj si to ako appku na plochu</div>
+    <div class="steps">
+      <div class="step"><div class="ci"><svg class="icn"><use href="#share"/></svg></div><div class="lbl">Ťukni<br><b style="color:#F7B53B">Zdieľať</b></div></div>
+      <div class="arr">→</div>
+      <div class="step"><div class="ci"><svg class="icn"><use href="#plus"/></svg></div><div class="lbl">Pridať<br>na plochu</div></div>
+    </div>
+    <div class="foot">Rýchly prístup k účasti tvojho dieťaťa, vždy po ruke.</div>
+  </div>
+  <a class="btn sec">alebo otvor prehľad teraz →</a>
+</div>
+
+</body></html>
