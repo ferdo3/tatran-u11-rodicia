@@ -82,8 +82,9 @@
   // appku do Safari s chrome). GAS report vložíme do fullscreen iframe; top-level zostane
   // na github.io → standalone bez pásov. V bežnom Safari ostáva C1 landing nižšie.
   (function(){
-    var isStandalone = (window.navigator.standalone === true);
-    if (!isStandalone) return;  // Safari → landing
+    var qs = location.search;
+    var isStandalone = (window.navigator.standalone === true) || /[?&]sa=1/.test(qs);
+    if (!isStandalone) return;  // Safari → landing  (?sa=1 = vynúť standalone shell pre test v Safari)
     document.documentElement.className += " embed";
     document.addEventListener("DOMContentLoaded", function(){
       document.body.className += " embed";
@@ -95,7 +96,8 @@
       // [PWA-size fix] iframe renderuje na DW=980 (= GAS-Safari šírka, pre ktorú sa parent
       // --fit kalibruje) a CSS transformom ho zmenšíme na šírku displeja → PWA má rovnakú
       // (menšiu) veľkosť ako priamy Safari, nie zväčšenú device-width verziu.
-      var DW = 750;  // 980→750 ≈ +30% väčší report v PWA (menšie DW = väčší obsah); tune ±
+      var dwM = qs.match(/[?&]dw=(\d+)/);
+      var DW = dwM ? parseInt(dwM[1], 10) : 980;  // ?dw=N override (test: ?sa=1&dw=N). Menšie DW = väčší obsah (ak DW vplýva).
       function fit(){
         var cs = getComputedStyle(wrap);
         var padL = parseFloat(cs.paddingLeft)||0, padR = parseFloat(cs.paddingRight)||0;
