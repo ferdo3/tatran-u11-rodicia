@@ -1,0 +1,104 @@
+<!DOCTYPE html><html lang="sk"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+<title>Landing C — doladené</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;font-family:Sora,-apple-system,sans-serif}
+  body{background:#0e110d;color:#e9ece8;padding:22px 14px 60px}
+  h1{font-size:18px;font-weight:800;margin-bottom:6px}
+  .intro{font-size:12.5px;color:#8a9088;margin-bottom:8px;line-height:1.5}
+  .row{display:flex;gap:20px;flex-wrap:wrap;justify-content:center;margin-top:14px}
+  .col{display:flex;flex-direction:column;align-items:center}
+  .lab{font-size:13.5px;font-weight:800;color:#cfe6d4;margin:0 0 4px}
+  .desc{font-size:11px;color:#8a9088;margin-bottom:12px;line-height:1.4;max-width:330px;text-align:center}
+  .phone{width:330px;max-width:92vw;aspect-ratio:9/19.3;border-radius:34px;overflow:hidden;
+    box-shadow:0 14px 40px rgba(0,0,0,.5);position:relative;
+    background:
+      radial-gradient(110% 75% at 16% 3%, rgba(0,0,0,.24), rgba(0,0,0,0) 44%),
+      radial-gradient(110% 75% at 84% 99%, rgba(0,0,0,.22), rgba(0,0,0,0) 44%),
+      radial-gradient(120% 90% at 50% 48%, rgba(255,255,255,.06), rgba(255,255,255,0) 55%),
+      linear-gradient(168deg,#134E27 0%,#1A7236 30%,#1F8B3F 58%,#2B9C49 100%);
+    display:flex;flex-direction:column;align-items:center;
+    text-align:center;padding:46px 24px 0;color:#fff}
+  .tile{width:78px;height:78px;border-radius:19px;box-shadow:0 8px 22px rgba(0,0,0,.32);margin-bottom:14px}
+  .markonly{width:74px;height:74px;margin-bottom:14px}
+  .wm{display:flex;font-weight:800;letter-spacing:-.025em;font-size:30px;line-height:1}
+  .wm .f{color:#fff}.wm .p{color:#F7B53B}
+  .wmsub{font-weight:600;letter-spacing:.34em;color:rgba(255,255,255,.66);font-size:9.5px;padding-left:.34em;margin-top:6px}
+  h2{font-size:23px;font-weight:800;letter-spacing:-.01em}
+  .role{font-size:12.5px;opacity:.86;margin-top:5px;font-weight:600;letter-spacing:.02em}
+  .tag{font-size:12px;opacity:.8;font-weight:400;margin-top:9px}
+  /* install card */
+  .inst{margin-top:auto;margin-bottom:0;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.2);
+    border-radius:18px 18px 0 0;padding:16px 17px 20px;width:calc(100% + 48px);margin-left:-24px}
+  .ititle{font-size:13px;font-weight:700;display:flex;align-items:center;gap:7px;justify-content:center;margin-bottom:13px}
+  .stp{display:flex;align-items:flex-start;gap:11px;text-align:left;margin-bottom:11px}
+  .num{flex:none;width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,.2);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:1px}
+  .stx{font-size:12.5px;line-height:1.4;flex:1}
+  .stx b{font-weight:700}
+  .chip{display:inline-flex;align-items:center;gap:4px;background:rgba(255,255,255,.18);border-radius:6px;padding:1px 6px;font-weight:700;font-size:11.5px;vertical-align:middle}
+  .warn{display:flex;align-items:center;gap:8px;background:rgba(247,181,59,.16);border:1px solid rgba(247,181,59,.4);
+    border-radius:11px;padding:9px 11px;font-size:11px;line-height:1.35;color:#FBE3B8;margin-top:4px}
+  .sec{display:block;margin-top:13px;font-size:12.5px;color:rgba(255,255,255,.85);text-decoration:underline;font-weight:600}
+  svg{display:block}
+  .ic{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .ic.am{stroke:#F7B53B}
+  .arrow-down{position:absolute;bottom:6px;left:50%;transform:translateX(-50%);font-size:11px;color:rgba(255,255,255,.7);font-weight:700}
+</style></head><body>
+<svg width="0" height="0" style="position:absolute"><defs>
+  <linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#134E27"/><stop offset=".32" stop-color="#1A7236"/><stop offset=".64" stop-color="#1F8B3F"/><stop offset="1" stop-color="#2B9C49"/></linearGradient>
+  <symbol id="appicon" viewBox="0 0 100 100"><rect width="100" height="100" fill="url(#g)"/><g transform="translate(11,11) scale(0.78)">
+    <path d="M31.26 12.41 A42 42 0 0 1 68.74 12.41 L63.83 22.26 A31 31 0 0 0 36.17 22.26 Z" fill="#fff"/><path d="M73.18 14.98 A42 42 0 0 1 91.92 47.44 L80.94 48.11 A31 31 0 0 0 67.11 24.15 Z" fill="#fff"/><path d="M91.92 52.56 A42 42 0 0 1 73.18 85.02 L67.11 75.85 A31 31 0 0 0 80.94 51.89 Z" fill="#fff"/><path d="M68.74 87.59 A42 42 0 0 1 31.26 87.59 L36.17 77.74 A31 31 0 0 0 63.83 77.74 Z" fill="#fff"/><path d="M26.82 85.02 A42 42 0 0 1 8.08 52.56 L19.06 51.89 A31 31 0 0 0 32.89 75.85 Z" fill="#fff"/><path d="M8.08 47.44 A42 42 0 0 1 26.82 14.98 L32.89 24.15 A31 31 0 0 0 19.06 48.11 Z" fill="#F59E0B"/><polygon points="64,50 42.5,37.5 42.5,62.5" fill="#F59E0B" stroke="#F59E0B" stroke-width="5.5" stroke-linejoin="round" stroke-linecap="round"/></g></symbol>
+  <symbol id="markonly" viewBox="0 0 100 100">
+    <path d="M31.26 12.41 A42 42 0 0 1 68.74 12.41 L63.83 22.26 A31 31 0 0 0 36.17 22.26 Z" fill="#fff"/><path d="M73.18 14.98 A42 42 0 0 1 91.92 47.44 L80.94 48.11 A31 31 0 0 0 67.11 24.15 Z" fill="#fff"/><path d="M91.92 52.56 A42 42 0 0 1 73.18 85.02 L67.11 75.85 A31 31 0 0 0 80.94 51.89 Z" fill="#fff"/><path d="M68.74 87.59 A42 42 0 0 1 31.26 87.59 L36.17 77.74 A31 31 0 0 0 63.83 77.74 Z" fill="#fff"/><path d="M26.82 85.02 A42 42 0 0 1 8.08 52.56 L19.06 51.89 A31 31 0 0 0 32.89 75.85 Z" fill="#fff"/><path d="M8.08 47.44 A42 42 0 0 1 26.82 14.98 L32.89 24.15 A31 31 0 0 0 19.06 48.11 Z" fill="#F59E0B"/><polygon points="64,50 42.5,37.5 42.5,62.5" fill="#F59E0B" stroke="#F59E0B" stroke-width="5.5" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+  <symbol id="share" viewBox="0 0 24 24"><path d="M12 15V4M8.5 7.5L12 4l3.5 3.5M6 11v8a1 1 0 001 1h10a1 1 0 001-1v-8"/></symbol>
+  <symbol id="plus" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><path d="M12 8.5v7M8.5 12h7"/></symbol>
+  <symbol id="info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7.5v.5"/></symbol>
+  <symbol id="install" viewBox="0 0 24 24"><path d="M12 3v10M8.5 9.5L12 13l3.5-3.5M5 16v3a1 1 0 001 1h12a1 1 0 001-1v-3"/></symbol>
+</defs></svg>
+
+<h1>Landing C — doladené (splash-vizuál + jasný install + flat ikony)</h1>
+<div class="intro">Hĺbkový gradient ako splash · jasný návod (Zdieľať = lišta Safari DOLE, nie na stránke) · striktne flat ikony. Vyber vizuál: C1 (app-ikona dlaždica) vs C2 (splash štýl).</div>
+
+<div class="row">
+  <!-- C1 — tile -->
+  <div class="col">
+    <div class="lab">C1 — app-ikona dlaždica</div>
+    <div class="desc">Ukáže rodičovi presne tú ikonu, čo sa mu objaví na ploche. Drží názov „U11 — Rodičia".</div>
+    <div class="phone">
+      <svg class="tile"><use href="#appicon"/></svg>
+      <h2>U11 — Rodičia</h2>
+      <div class="tag">Férové minúty pre každého</div>
+      <div class="inst">
+        <div class="ititle"><svg class="ic"><use href="#install"/></svg> Pridaj si to na plochu ako appku</div>
+        <div class="stp"><div class="num">1</div><div class="stx"><b>Dole v lište Safari</b> ťukni na ikonu Zdieľať <span class="chip"><svg class="ic" style="width:14px;height:14px"><use href="#share"/></svg></span></div></div>
+        <div class="stp"><div class="num">2</div><div class="stx">Posuň nižšie a vyber <b>Pridať na plochu</b> <span class="chip"><svg class="ic" style="width:14px;height:14px"><use href="#plus"/></svg></span></div></div>
+        <div class="warn"><svg class="ic am" style="flex:none"><use href="#info"/></svg><div>Ikona Zdieľať je v <b>spodnej lište prehliadača</b> — nie na tejto stránke.</div></div>
+        <a class="sec">alebo otvor prehľad teraz →</a>
+      </div>
+      <div class="arrow-down">↓ lišta Safari</div>
+    </div>
+  </div>
+
+  <!-- C2 — splash style -->
+  <div class="col">
+    <div class="lab">C2 — splash štýl</div>
+    <div class="desc">Marka + wordmark „FairPlay MANAGER" ako na splashi (zladené s tým čo rodič uvidí pri spustení). „Rodičia" ako rola.</div>
+    <div class="phone">
+      <svg class="markonly"><use href="#markonly"/></svg>
+      <div class="wm"><span class="f">Fair</span><span class="p">Play</span></div>
+      <div class="wmsub">MANAGER</div>
+      <div class="role">Rodičia · U11</div>
+      <div class="tag" style="margin-top:7px">Férové minúty pre každého</div>
+      <div class="inst">
+        <div class="ititle"><svg class="ic"><use href="#install"/></svg> Pridaj si to na plochu ako appku</div>
+        <div class="stp"><div class="num">1</div><div class="stx"><b>Dole v lište Safari</b> ťukni na ikonu Zdieľať <span class="chip"><svg class="ic" style="width:14px;height:14px"><use href="#share"/></svg></span></div></div>
+        <div class="stp"><div class="num">2</div><div class="stx">Posuň nižšie a vyber <b>Pridať na plochu</b> <span class="chip"><svg class="ic" style="width:14px;height:14px"><use href="#plus"/></svg></span></div></div>
+        <div class="warn"><svg class="ic am" style="flex:none"><use href="#info"/></svg><div>Ikona Zdieľať je v <b>spodnej lište prehliadača</b> — nie na tejto stránke.</div></div>
+        <a class="sec">alebo otvor prehľad teraz →</a>
+      </div>
+      <div class="arrow-down">↓ lišta Safari</div>
+    </div>
+  </div>
+</div>
+</body></html>
