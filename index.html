@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Rodičia U11</title>
-<link rel="apple-touch-icon" href="apple-touch-icon.png?v=8">
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=8">
-<link rel="apple-touch-icon-precomposed" href="apple-touch-icon.png?v=8">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=8">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png?v=8">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=9">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=9">
+<link rel="apple-touch-icon-precomposed" href="apple-touch-icon.png?v=9">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=9">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png?v=9">
 <meta name="apple-mobile-web-app-title" content="Rodičia U11">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -20,6 +20,8 @@
 <style>
   *{box-sizing:border-box}
   html,body{margin:0;height:100%;min-height:100%}
+  /* root SOLID zelený → iOS v štandalone PWA maľuje spodnú safe-area (home-indicator) farbou root/canvas, NIE body gradientom (background-image sa do safe-area canvas nepropaguje spoľahlivo) → bez tohto = biely pruh dole. */
+  html{background:#1F8B3F}
   body{color:#fff;font-family:'Sora',-apple-system,'Helvetica Neue',Helvetica,Arial,sans-serif;
     /* Splash-zladený hĺbkový gradient (2 tmavé rohy + svetlý stred) */
     background:
@@ -56,7 +58,9 @@
     padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom);
     padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)}
   /* spodná safe-area (home-indicator) pri REPORTE = biela; splash (position:absolute, z-index:1) ju počas loadingu prekryje → splash ostáva celý zelený. Štruktúra zhodná s trener launcherom (referencia bez bieleho pruhu). */
-  #appwrap::after{content:"";position:absolute;left:0;right:0;bottom:0;height:env(safe-area-inset-bottom,0px);background:#fff;pointer-events:none}
+  #appwrap::after{content:"";position:absolute;left:0;right:0;bottom:0;height:env(safe-area-inset-bottom,0px);background:transparent;pointer-events:none}
+  /* biely home-indicator pruh AŽ keď je REPORT načítaný (.ready). Počas splashu transparent → presvitá zelený root (žiadny biely pruh v splashi). */
+  #appwrap.ready::after{background:#fff}
   /* width/height/transform nastavuje JS (fit) — iframe renderuje na DW=980 a škáluje sa na
      šírku displeja → replikuje GAS-in-Safari prostredie (rovnaká veľkosť ako priamy Safari). */
   #appframe{display:block;border:0;background:#fff}
@@ -119,7 +123,7 @@
       if (window.visualViewport) window.visualViewport.addEventListener("resize", fit);
       window.addEventListener("resize", fit);
       window.addEventListener("orientationchange", function(){ setTimeout(fit, 250); });
-      frame.addEventListener("load", function(){ if (splash) splash.className = "hide"; if (window.__spi) clearInterval(window.__spi); fit(); });
+      frame.addEventListener("load", function(){ if (splash) splash.className = "hide"; if (wrap) wrap.classList.add("ready"); if (window.__spi) clearInterval(window.__spi); fit(); });
       // [v22.144] cache-bust report (client) → vždy čerstvá verzia (server-cache cez scriptVersion ostáva)
       frame.src = REPORT + "&_cb=" + Date.now();
     });
@@ -139,7 +143,7 @@
 
   <!-- Bežné Safari / Android: C1 landing -->
   <main id="landing">
-    <img class="ltile" src="apple-touch-icon.png?v=8" alt="U11 Rodičia">
+    <img class="ltile" src="apple-touch-icon.png?v=9" alt="U11 Rodičia">
     <h1>U11 — Rodičia</h1>
     <div class="ltag">Férové minúty pre každého</div>
     <div class="inst" id="inst"></div>
