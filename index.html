@@ -117,7 +117,8 @@
       window.addEventListener("resize", fit);
       window.addEventListener("orientationchange", function(){ setTimeout(fit, 250); });
       frame.addEventListener("load", function(){ if (splash) splash.className = "hide"; if (window.__spi) clearInterval(window.__spi); fit(); });
-      frame.src = REPORT;
+      // [v22.144] cache-bust report (client) → vždy čerstvá verzia (server-cache cez scriptVersion ostáva)
+      frame.src = REPORT + "&_cb=" + Date.now();
     });
   })();
 </script>
