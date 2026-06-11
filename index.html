@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Rodičia U11</title>
-<link rel="apple-touch-icon" href="apple-touch-icon.png?v=6">
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=6">
-<link rel="apple-touch-icon-precomposed" href="apple-touch-icon.png?v=6">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=6">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png?v=6">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=7">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=7">
+<link rel="apple-touch-icon-precomposed" href="apple-touch-icon.png?v=7">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=7">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png?v=7">
 <meta name="apple-mobile-web-app-title" content="Rodičia U11">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -54,13 +54,13 @@
   #appwrap{position:fixed;inset:0;z-index:1000;display:none;background:#1F8B3F;overflow:hidden;
     padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom);
     padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)}
-  /* spodná safe-area (home-indicator) pri REPORTE = biela (splash z-index:3 ju prekryje počas loadingu, takže splash ostáva zelený). Ako trener. */
-  #appwrap::after{content:"";position:absolute;left:0;right:0;bottom:0;height:env(safe-area-inset-bottom,0px);background:#FFFFFF;z-index:1;pointer-events:none}
+  /* spodná safe-area (home-indicator) pri REPORTE = biela; splash (position:absolute, z-index:1) ju počas loadingu prekryje → splash ostáva celý zelený. Štruktúra zhodná s trener launcherom (referencia bez bieleho pruhu). */
+  #appwrap::after{content:"";position:absolute;left:0;right:0;bottom:0;height:env(safe-area-inset-bottom,0px);background:#fff;pointer-events:none}
   /* width/height/transform nastavuje JS (fit) — iframe renderuje na DW=980 a škáluje sa na
      šírku displeja → replikuje GAS-in-Safari prostredie (rovnaká veľkosť ako priamy Safari). */
   #appframe{display:block;border:0;background:#fff}
-  /* [v22.146] position:fixed → splash pokryje CELÝ viewport vrátane spodnej safe-area (full-bleed zelený, žiadny biely pruh dole; report-spodok ostáva biely cez #appwrap bg) */
-  #splash{position:fixed;inset:0;z-index:3;display:flex;flex-direction:column;
+  /* [v22.146b] position:absolute;inset:0 = celý padding-box #appwrap vrátane safe-area regiónu → splash prekryje ::after (biely spodok) = full-bleed zelený splash bez bieleho pruhu. Zhodné s trener (position:fixed presakovalo ::after cez vlastný stacking context na iOS PWA). */
+  #splash{position:absolute;inset:0;z-index:1;display:flex;flex-direction:column;
     align-items:center;justify-content:center;color:#fff;font-family:'Sora',-apple-system,sans-serif;
     transition:opacity .3s;pointer-events:none;
     background:
@@ -138,7 +138,7 @@
 
   <!-- Bežné Safari / Android: C1 landing -->
   <main id="landing">
-    <img class="ltile" src="apple-touch-icon.png?v=6" alt="U11 Rodičia">
+    <img class="ltile" src="apple-touch-icon.png?v=7" alt="U11 Rodičia">
     <h1>U11 — Rodičia</h1>
     <div class="ltag">Férové minúty pre každého</div>
     <div class="inst" id="inst"></div>
