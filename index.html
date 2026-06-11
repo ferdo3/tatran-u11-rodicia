@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Rodičia U11</title>
-<link rel="apple-touch-icon" href="apple-touch-icon.png?v=7">
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=7">
-<link rel="apple-touch-icon-precomposed" href="apple-touch-icon.png?v=7">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=7">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png?v=7">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=8">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=8">
+<link rel="apple-touch-icon-precomposed" href="apple-touch-icon.png?v=8">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=8">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png?v=8">
 <meta name="apple-mobile-web-app-title" content="Rodičia U11">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -27,7 +27,8 @@
       radial-gradient(110% 75% at 84% 99%, rgba(0,0,0,.22), rgba(0,0,0,0) 44%),
       radial-gradient(120% 90% at 50% 48%, rgba(255,255,255,.06), rgba(255,255,255,0) 55%),
       linear-gradient(168deg,#134E27 0%,#1A7236 30%,#1F8B3F 58%,#2B9C49 100%);
-    background-repeat:no-repeat;background-attachment:fixed}
+    background-repeat:no-repeat}
+    /* pozn.: background-attachment:fixed ODSTRÁNENÝ — iOS Safari ho v štandalone PWA nevykresľoval v spodnej safe-area (home-indicator) → biely pruh. Trener launcher (referencia bez pruhu) ho tiež nemá. */
 
   /* ===== C1 LANDING (bežné Safari / nie standalone) ===== */
   #landing{display:flex;flex-direction:column;align-items:center;text-align:center;
@@ -138,7 +139,7 @@
 
   <!-- Bežné Safari / Android: C1 landing -->
   <main id="landing">
-    <img class="ltile" src="apple-touch-icon.png?v=7" alt="U11 Rodičia">
+    <img class="ltile" src="apple-touch-icon.png?v=8" alt="U11 Rodičia">
     <h1>U11 — Rodičia</h1>
     <div class="ltag">Férové minúty pre každého</div>
     <div class="inst" id="inst"></div>
