@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Rodičia U11</title>
-<link rel="apple-touch-icon" href="apple-touch-icon.png?v=9">
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=9">
-<link rel="apple-touch-icon-precomposed" href="apple-touch-icon.png?v=9">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=9">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png?v=9">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=10">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=10">
+<link rel="apple-touch-icon-precomposed" href="apple-touch-icon.png?v=10">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=10">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png?v=10">
 <meta name="apple-mobile-web-app-title" content="Rodičia U11">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -20,8 +20,13 @@
 <style>
   *{box-sizing:border-box}
   html,body{margin:0;height:100%;min-height:100%}
-  /* root SOLID zelený → iOS v štandalone PWA maľuje spodnú safe-area (home-indicator) farbou root/canvas, NIE body gradientom (background-image sa do safe-area canvas nepropaguje spoľahlivo) → bez tohto = biely pruh dole. */
-  html{background:#1F8B3F}
+  /* root = IDENTICKÝ splash gradient → iOS v štandalone PWA maľuje spodnú safe-area (home-indicator) z root/canvas pozadia; rovnaký gradient + rovnaký viewport box ako #splash → strip plynulo nadviaže (žiadny biely pruh ANI flat šev). Solid farba robila viditeľný šev (iný odtieň než gradient). */
+  html{background:
+    radial-gradient(110% 75% at 16% 3%, rgba(0,0,0,.24), rgba(0,0,0,0) 44%),
+    radial-gradient(110% 75% at 84% 99%, rgba(0,0,0,.22), rgba(0,0,0,0) 44%),
+    radial-gradient(120% 90% at 50% 48%, rgba(255,255,255,.06), rgba(255,255,255,0) 55%),
+    linear-gradient(168deg,#134E27 0%,#1A7236 30%,#1F8B3F 58%,#2B9C49 100%);
+    background-repeat:no-repeat}
   body{color:#fff;font-family:'Sora',-apple-system,'Helvetica Neue',Helvetica,Arial,sans-serif;
     /* Splash-zladený hĺbkový gradient (2 tmavé rohy + svetlý stred) */
     background:
@@ -143,7 +148,7 @@
 
   <!-- Bežné Safari / Android: C1 landing -->
   <main id="landing">
-    <img class="ltile" src="apple-touch-icon.png?v=9" alt="U11 Rodičia">
+    <img class="ltile" src="apple-touch-icon.png?v=10" alt="U11 Rodičia">
     <h1>U11 — Rodičia</h1>
     <div class="ltag">Férové minúty pre každého</div>
     <div class="inst" id="inst"></div>
