@@ -61,7 +61,8 @@
   /* width/height/transform nastavuje JS (fit) — iframe renderuje na DW=980 a škáluje sa na
      šírku displeja → replikuje GAS-in-Safari prostredie (rovnaká veľkosť ako priamy Safari). */
   #appframe{display:block;border:0;background:#fff}
-  #splash{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;
+  /* [v22.146] position:fixed → splash pokryje CELÝ viewport vrátane spodnej safe-area (full-bleed zelený, žiadny biely pruh dole; report-spodok ostáva biely cez #appwrap bg) */
+  #splash{position:fixed;inset:0;z-index:3;display:flex;flex-direction:column;
     align-items:center;justify-content:center;color:#fff;font-family:'Sora',-apple-system,sans-serif;
     transition:opacity .3s;pointer-events:none;
     background:
